@@ -6,10 +6,10 @@
     <servers>
         <primary>
             <rest>
-                <baseurl type="REST1.0">http://etsy.github.com/phpunit-extensions//rest/</baseurl>
-                <baseurl type="REST1.1">http://etsy.github.com/phpunit-extensions//rest/</baseurl>
-                <baseurl type="REST1.2">http://etsy.github.com/phpunit-extensions//rest/</baseurl>
-                <baseurl type="REST1.3">http://etsy.github.com/phpunit-extensions//rest/</baseurl>
+                <baseurl type="REST1.0">http://etsy.github.com/phpunit-extensions/pear//rest/</baseurl>
+                <baseurl type="REST1.1">http://etsy.github.com/phpunit-extensions/pear//rest/</baseurl>
+                <baseurl type="REST1.2">http://etsy.github.com/phpunit-extensions/pear//rest/</baseurl>
+                <baseurl type="REST1.3">http://etsy.github.com/phpunit-extensions/pear//rest/</baseurl>
             </rest>
         </primary>
     </servers>
