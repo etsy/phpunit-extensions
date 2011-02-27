@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<server>
+  <name>etsy.github.com/phpunit-extensions</name>
+  <summary>Etsy's PHPUnit Extensions PEAR Channel</summary>
+  <alias>etsy-phpunit-extensions</alias>
+  <url>http://etsy.github.com/phpunit-extensions/</url>
+</server>
+
