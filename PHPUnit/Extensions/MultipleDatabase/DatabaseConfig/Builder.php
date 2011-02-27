@@ -3,7 +3,7 @@
 /**
  * Builder for a DatabaseConfig.
  */
-class PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder {
+class PHPUnit_Extensions_MultipleDatabase_DatabaseConfig_Builder {
 
     private $connection;
     private $dataSet;
@@ -21,7 +21,7 @@ class PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder {
      * A connection must be provided.
      *
      * @param PHPUnit_Extensions_Database_DB_IDatabaseConnection connection
-     * @return PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder
+     * @return PHPUnit_Extensions_MultipleDatabase_DatabaseConfig_Builder
      */
     public function connection($connection) {
         $this->connection = $connection;
@@ -32,7 +32,7 @@ class PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder {
      * A data set must be provided.
      *
      * @param PHPUnit_Extensions_Database_DataSet_IDataSet dataSet
-     * @return PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder
+     * @return PHPUnit_Extensions_MultipleDatabase_DatabaseConfig_Builder
      */
     public function dataSet($dataSet) {
         $this->dataSet = $dataSet;
@@ -43,7 +43,7 @@ class PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder {
      * Default set up operation is CLEAN_INSERT with cascading deletes.
      *
      * @param PHPUnit_Extensions_Database_Operation_IDatabaseOperation setUpOperation
-     * @return PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder
+     * @return PHPUnit_Extensions_MultipleDatabase_DatabaseConfig_Builder
      */
     public function setUpOperation($setUpOperation) {
         $this->setUpOperation = $setUpOperation;
@@ -54,7 +54,7 @@ class PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder {
      * Default tear down operation is NONE.
      *
      * @param PHPUnit_Extensions_Database_Operation_IDatabaseOperation tearDownOperation
-     * @return PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder
+     * @return PHPUnit_Extensions_MultipleDatabase_DatabaseConfig_Builder
      */
     public function tearDownOperation($tearDownOperation) {
         $this->tearDownOperation = $tearDownOperation;
@@ -62,7 +62,7 @@ class PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder {
     }
 
     /**
-     * @return PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder
+     * @return PHPUnit_Extensions_MultipleDatabase_DatabaseConfig_Builder
      */
     public function build() {
         if (!isset($this->connection)) {
@@ -75,7 +75,7 @@ class PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder {
         if($this->datasetIsEmpty()) {
             throw new Exception("Empty dataset (is the path correct?)");
         }
-        return new PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig(
+        return new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig(
             $this->connection,
             $this->dataSet,
             $this->setUpOperation,

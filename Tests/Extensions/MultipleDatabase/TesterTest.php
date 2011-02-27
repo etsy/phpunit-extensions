@@ -1,12 +1,12 @@
 <?php
 
-require_once 'PHPUnit/Extensions/DBUnit/MultipleDatabase/DatabaseConfig.php';
-require_once 'PHPUnit/Extensions/DBUnit/MultipleDatabase/Tester.php';
+require_once 'PHPUnit/Extensions/MultipleDatabase/DatabaseConfig.php';
+require_once 'PHPUnit/Extensions/MultipleDatabase/Tester.php';
 
 /**
- * @covers PHPUnit_Extensions_DBUnit_MultipleDatabase_Tester
+ * @covers PHPUnit_Extensions_MultipleDatabase_Tester
  */
-class Tests_Extensions_DBUnit_MultipleDatabase_TesterTest 
+class Tests_Extensions_MultipleDatabase_TesterTest 
 extends PHPUnit_Framework_TestCase {
 
     private $dbConfig;
@@ -24,7 +24,7 @@ extends PHPUnit_Framework_TestCase {
             'PHPUnit_Extensions_Database_Operation_IDatabaseOperation');
 
         $this->dbConfig = $this->getMockBuilder(
-            'PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig')
+            'PHPUnit_Extensions_MultipleDatabase_DatabaseConfig')
             ->setConstructorArgs(
                 array(
                     $connection, 
@@ -53,7 +53,7 @@ extends PHPUnit_Framework_TestCase {
 
     public function testConstruct_setsConnectionCorrectly() {
         $tester = 
-            new PHPUnit_Extensions_DBUnit_MultipleDatabase_Tester($this->dbConfig);
+            new PHPUnit_Extensions_MultipleDatabase_Tester($this->dbConfig);
         $this->assertEquals(
             $this->dbConfig->getConnection(),
             $tester->getConnection());

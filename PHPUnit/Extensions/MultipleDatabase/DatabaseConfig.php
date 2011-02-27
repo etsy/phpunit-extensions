@@ -3,7 +3,7 @@
 /**
  * Configuration for a data base configuration.
  */
-class PHPUnit_Extensions_DBunit_MultipleDatabase_DatabaseConfig {
+class PHPUnit_Extensions_MultipleDatabase_DatabaseConfig {
 
     private $connection;
     private $dataSet;

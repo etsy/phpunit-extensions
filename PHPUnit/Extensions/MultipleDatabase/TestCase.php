@@ -1,10 +1,10 @@
 <?php
 
 /**
- * TestCase the utilizes multiple DBUnit database testers to connect and
+ * TestCase the utilizes multiple database testers to connect and
  * populate multiple databases for tests dependent upon databases.
  */
-abstract class PHPUnit_Extensions_DBUnit_MultipleDatabase_TestCase 
+abstract class PHPUnit_Extensions_MultipleDatabase_TestCase 
 extends PHPUnit_Framework_TestCase {
 
     private $testers;
@@ -23,7 +23,7 @@ extends PHPUnit_Framework_TestCase {
     } 
   
     /**
-     * @return PHPUnit_Extensions_DBUnit_MultipleDatabase_Database array
+     * @return PHPUnit_Extensions_MultipleDatabase_Database array
      */
     protected abstract function getDatabaseConfigs();
 
@@ -66,7 +66,7 @@ extends PHPUnit_Framework_TestCase {
             $this->testers = array();
             foreach ($this->getDatabaseConfigs() as $dbConfig) {
                 $this->testers[] =
-                    new PHPUnit_Extensions_DBUnit_MultipleDatabase_Tester(
+                    new PHPUnit_Extensions_MultipleDatabase_Tester(
                         $dbConfig);
             }
         }
