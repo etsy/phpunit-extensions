@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<r xmlns="http://pear.php.net/dtd/rest.release" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.release http://pear.php.net/dtd/rest.release.xsd">
+    <p xlink:href="/rest/p/etsy_phpunit_extensions">Etsy_PHPUnit_Extensions</p>
+    <c>etsy.github.com/phpunit-extensions</c>
+    <v>0.1.0</v>
+    <st>beta</st>
+    <l>MIT</l>
+    <m>elblinkin</m>
+    <s>Etsy extensions for PHPUnit.</s>
+    <d>Etsy extensions for PHPUnit.</d>
+    <da>2011-02-27 18:57:21</da>
+    <n>
+-
+ </n>
+    <f>2149</f>
+    <g>http://etsy.github.com/phpunit-extensions//get/Etsy_PHPUnit_Extensions-0.1.0</g>
+    <x xlink:href="package.0.1.0.xml"/>
+</r>
