@@ -1,12 +1,12 @@
 <?php
 
-require_once 'PHPUnit/Extensions/DBUnit/MultipleDatabase/DatabaseConfig.php';
-require_once 'PHPUnit/Extensions/DBUnit/MultipleDatabase/DatabaseConfig/Builder.php';
+require_once 'PHPUnit/Extensions/MultipleDatabase/DatabaseConfig.php';
+require_once 'PHPUnit/Extensions/MultipleDatabase/DatabaseConfig/Builder.php';
 
 /**
- * @covers PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder
+ * @covers PHPUnit_Extensions_MultipleDatabase_DatabaseConfig_Builder
  */
-class Tests_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_BuilderTest
+class Tests_Extensions_MultipleDatabase_DatabaseConfig_BuilderTest
     extends PHPUnit_Framework_TestCase {
 
     private $builder;
@@ -14,7 +14,7 @@ class Tests_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_BuilderTest
 
     protected function setUp() {
         $this->builder =
-            new PHPUnit_Extensions_DBUnit_MultipleDatabase_DatabaseConfig_Builder();
+            new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig_Builder();
         $this->dataSet = 
             $this->getMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
         $this->dataSet
