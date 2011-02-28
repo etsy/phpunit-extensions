@@ -5,7 +5,7 @@ Etsy PHPUnit Extensions
 
 Tutorials
 --------------------
-* [Asserts](https://github.com/etsy/phpunit-extensions/wiki/Assertss)
+* [Asserts](https://github.com/etsy/phpunit-extensions/wiki/Asserts)
 * [Constraints](https://github.com/etsy/phpunit-extensions/wiki/Constraints)
 * [Multiple Database](https://github.com/etsy/phpunit-extensions/wiki/Multiple-Database)
 * [Ticket Listener](https://github.com/etsy/phpunit-extensions/wiki/Ticket-Listener)
