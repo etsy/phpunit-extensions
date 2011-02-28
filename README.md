@@ -10,6 +10,10 @@ Tutorials
 * [Multiple Database](https://github.com/etsy/phpunit-extensions/wiki/Multiple-Database)
 * [Ticket Listener](https://github.com/etsy/phpunit-extensions/wiki/Ticket-Listener)
 
+Installation
+-------------------
+See [PEAR Channel](http://etsy.github.com/phpunit-extensions
+
 Contribute
 --------------------
 
