@@ -30,7 +30,33 @@
    <dir name="/">
     <file name="LICENSE" role="doc" />
     <file name="README.md" role="doc" />
-    <dir name="PHPUnit" />
+    <dir name="PHPUnit">
+     <dir name="Extensions">
+      <dir name="Assert">
+       <file name="More.php" role="php" />
+      </dir>
+      <dir name="Constraint">
+       <file name="HasItems.php" role="php" />
+       <file name="SameSize.php" role="php" />
+       <file name="StringMatchIgnoreWhitespace.php" role="php" />
+      </dir>
+      <dir name="MultipleDatabase">
+       <dir name="DatabaseConfig">
+        <file name="Builder.php" role="php" />
+       </dir>
+       <file name="DatabaseConfig.php" role="php" />
+       <file name="TestCase.php" role="php" />
+       <file name="Tester.php" role="php" />
+      </dir>
+      <dir name="TicketListener">
+       <dir name="Jira">
+        <file baseinstalldir="/" name="Client.php" role="php" />
+        <file baseinstalldir="/" name="StatusConverter.php" role="php" />
+       </dir>
+       <file baseinstalldir="/" name="Jira.php" role="php" />
+      </dir>
+     </dir>
+    </dir>
    </dir>
  </contents>
  <dependencies>
