@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<p xmlns="http://pear.php.net/dtd/rest.package" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
+<n>Etsy_PHPUnit_Extensions</n>
+<c>etsy.github.com/phpunit-extensions</c>
+<ca xlink:href="/rest/c/Default">Default</ca>
+<l>MIT</l>
+<s>Etsy extensions for PHPUnit.</s>
+<d>Etsy extensions for PHPUnit.</d>
+<r xlink:href="/rest/r/etsy_phpunit_extensions" />
+</p>
