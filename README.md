@@ -12,7 +12,7 @@ Tutorials
 
 Installation
 -------------------
-See [PEAR Channel](http://etsy.github.com/phpunit-extensions
+See [PEAR Channel](http://etsy.github.com/phpunit-extensions)
 
 Contribute
 --------------------
