@@ -15,10 +15,10 @@
   <email>github@elblinkin.info</email>
   <active>yes</active>
  </lead>
- <date>2011-02-27</date>
+ <date>2011-03-29</date>
  <version>
-  <release>0.1.0</release>
-  <api>0.1.0</api>
+  <release>0.1.1</release>
+  <api>0.1.1</api>
  </version>
  <stability>
   <release>beta</release>
@@ -39,6 +39,16 @@
        <file name="HasItems.php" role="php" />
        <file name="SameSize.php" role="php" />
        <file name="StringMatchIgnoreWhitespace.php" role="php" />
+      </dir>
+      <dir name="MockObject">
+        <dir name="Stub">
+          <file name="ReturnMapping.php" role="php" />
+          <dir name="ReturnMapping">
+            <file name="Builder.php" role="php" />
+            <file name="Entry.php" role="php" />
+            <file name="EntryBuilder.php" role="php" />
+          </dir>
+        </dir>
       </dir>
       <dir name="MultipleDatabase">
        <dir name="DatabaseConfig">
