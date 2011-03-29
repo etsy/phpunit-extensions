@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
+ <name>Etsy_PHPUnit_Extensions</name>
+ <channel>etsy.github.com/phpunit-extensions</channel>
+ <summary>Etsy extensions for PHPUnit.</summary>
+ <description>Etsy extensions for PHPUnit.</description>
+ <lead>
+  <name>Laura Beth Lincoln Denker</name>
+  <user>elblinkin</user>
+  <email>github@elblinkin.info</email>
+  <active>yes</active>
+ </lead>
+ <date>2011-03-29</date>
+ <time>15:33:36</time>
+ <version>
+  <release>0.1.1</release>
+  <api>0.1.1</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/mit-license.php">MIT</license>
+ <notes>
+-
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="953967d83dade4551ca6d2120495d16f" name="PHPUnit/Extensions/Assert/More.php" role="php" />
+   <file md5sum="486c23886afae20a4e21cd329b3f22d6" name="PHPUnit/Extensions/Constraint/HasItems.php" role="php" />
+   <file md5sum="8ec94ac8902b14b73addf7b1b7c33342" name="PHPUnit/Extensions/Constraint/SameSize.php" role="php" />
+   <file md5sum="c4c300aaabb94799127aafb5e6a1fca7" name="PHPUnit/Extensions/Constraint/StringMatchIgnoreWhitespace.php" role="php" />
+   <file md5sum="97c4d5d43be267cd1ec770b5f577efcf" name="PHPUnit/Extensions/MockObject/Stub/ReturnMapping/Builder.php" role="php" />
+   <file md5sum="abe7b5e22faad1922d79ac2d76689d65" name="PHPUnit/Extensions/MockObject/Stub/ReturnMapping/Entry.php" role="php" />
+   <file md5sum="9538fda41bc97245f88606efca8938dc" name="PHPUnit/Extensions/MockObject/Stub/ReturnMapping/EntryBuilder.php" role="php" />
+   <file md5sum="6e2648a81ff678e272d6fcfb21732755" name="PHPUnit/Extensions/MockObject/Stub/ReturnMapping.php" role="php" />
+   <file md5sum="d2706804969a28b6c68e0a9afad8505c" name="PHPUnit/Extensions/MultipleDatabase/DatabaseConfig/Builder.php" role="php" />
+   <file md5sum="160a6542379e75e78d2c155d1f67f7bd" name="PHPUnit/Extensions/MultipleDatabase/DatabaseConfig.php" role="php" />
+   <file md5sum="19d4948fbde7e3b9224c9433fe68e394" name="PHPUnit/Extensions/MultipleDatabase/TestCase.php" role="php" />
+   <file md5sum="1b5540282210365e9ca78c370d4bb546" name="PHPUnit/Extensions/MultipleDatabase/Tester.php" role="php" />
+   <file baseinstalldir="/" md5sum="6f923849efb1bdcf9e6b0fba1cef2de0" name="PHPUnit/Extensions/TicketListener/Jira/Client.php" role="php" />
+   <file baseinstalldir="/" md5sum="c4ec2f1e99fedb37901b2b454fb29cd9" name="PHPUnit/Extensions/TicketListener/Jira/StatusConverter.php" role="php" />
+   <file baseinstalldir="/" md5sum="f452f03104efb3d333dc4fd437260a76" name="PHPUnit/Extensions/TicketListener/Jira.php" role="php" />
+   <file md5sum="7e3bda0a89816594c790339791a106d4" name="LICENSE" role="doc" />
+   <file md5sum="fc4cb2ecaba907958e087be1523c131c" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.9</min>
+   </php>
+   <pearinstaller>
+    <min>1.9.1</min>
+   </pearinstaller>
+   <package>
+    <name>PHPUnit</name>
+    <channel>pear.phpunit.de</channel>
+    <min>3.5.12</min>
+   </package>
+  </required>
+ </dependencies>
+ <phprelease />
+</package>

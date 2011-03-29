@@ -7,6 +7,17 @@
     </author>
 
     <entry>
+        <title>Etsy_PHPUnit_Extensions 0.1.1 (beta)</title>
+        <link href="http://etsy.github.com/phpunit-extensions//get/Etsy_PHPUnit_Extensions-0.1.1.tgz" />
+        <id>Etsy_PHPUnit_Extensions-0.1.1</id>
+        <author>
+            <name>elblinkin</name>
+        </author>
+        <updated>2011-03-29T15:33:36-04:00</updated>
+        <content>
+            Etsy extensions for PHPUnit.
+        </content>
+    </entry>    <entry>
         <title>Etsy_PHPUnit_Extensions 0.1.0 (beta)</title>
         <link href="http://etsy.github.com/phpunit-extensions//get/Etsy_PHPUnit_Extensions-0.1.0.tgz" />
         <id>Etsy_PHPUnit_Extensions-0.1.0</id>
