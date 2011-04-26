@@ -51,10 +51,7 @@ class PHPUnit_Extensions_Assert_More {
 
         PHPUnit_Framework_Assert::assertThat(
             $actual,
-            PHPUnit_Framework_Assert::logicalAnd(
-                new PHPUnit_Extensions_Constraint_HasItems($expected),
-                new PHPUnit_Extensions_Constraint_SameSize($expected)
-            ),
+            new PHPUnit_Extensions_Constraint_ArrayEqualsNoOrder($expected),
             $message);
     }
 
