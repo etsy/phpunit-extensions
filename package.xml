@@ -15,10 +15,10 @@
   <email>github@elblinkin.info</email>
   <active>yes</active>
  </lead>
- <date>2011-03-29</date>
+ <date>2011-05-01</date>
  <version>
-  <release>0.1.1</release>
-  <api>0.1.1</api>
+  <release>0.1.2</release>
+  <api>0.1.2</api>
  </version>
  <stability>
   <release>beta</release>
@@ -36,6 +36,7 @@
        <file name="More.php" role="php" />
       </dir>
       <dir name="Constraint">
+       <file name="ArrayEqualsNoOrder.php" role="php" />
        <file name="HasItems.php" role="php" />
        <file name="SameSize.php" role="php" />
        <file name="StringMatchIgnoreWhitespace.php" role="php" />
