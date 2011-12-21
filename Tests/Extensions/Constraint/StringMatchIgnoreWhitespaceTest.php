@@ -55,12 +55,12 @@ extends PHPUnit_Framework_TestCase {
             new PHPUnit_Extensions_Constraint_StringMatchIgnoreWhitespace(
                 "new\nline");
         try {
-            $constraint->fail("\ttab", '');
+            $constraint->evaluate("\ttab");
         } catch (PHPUnit_Framework_ExpectationFailedException $e) {
             $this->assertEquals(
                 'Failed asserting that <string:tab>'
                 . ' equals ignoring whitespace <string:new line>.',
-                $e->getDescription());
+                $e->getMessage());
         }
     }
 

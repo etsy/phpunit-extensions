@@ -12,7 +12,7 @@ extends PHPUnit_Framework_Constraint {
         $this->expected = $expected;
     }
 
-    public function evaluate($actual) {
+    protected function matches($actual) {
         return $this->normalize($this->expected) == $this->normalize($actual);
     }
 
@@ -20,9 +20,8 @@ extends PHPUnit_Framework_Constraint {
         return implode(' ', preg_split('/\s+/', trim($string)));
     }
 
-    protected function failureDescription($other, $description, $not) {
-        return parent::failureDescription(
-            $this->normalize($other), $description, $not);
+    protected function failureDescription($string) {
+        return parent::failureDescription($this->normalize($string));
     }
 
     public function toString() {

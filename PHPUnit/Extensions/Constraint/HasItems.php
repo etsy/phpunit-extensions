@@ -12,7 +12,7 @@ extends PHPUnit_Framework_Constraint {
         $this->expected = $expected;
     }
 
-    public function evaluate($other) {
+    protected function matches($other) {
         if (!(is_array($this->expected) && is_array($other))) {
             return false;
         }

@@ -19,8 +19,8 @@ extends PHPUnit_Framework_Constraint {
         );
     }
 
-    public function evaluate($other) {
-        return $this->andConstraint->evaluate($other);
+    protected function matches($other) {
+        return $this->andConstraint->matches($other);
     }
 
     public function toString() {
