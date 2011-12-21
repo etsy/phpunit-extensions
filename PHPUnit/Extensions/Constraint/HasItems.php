@@ -28,7 +28,7 @@ extends PHPUnit_Framework_Constraint {
 
     public function toString() {
         return sprintf('has items %s', 
-            PHPUnit_Util_Type::toString($this->expected));
+            PHPUnit_Util_Type::export($this->expected));
     }
 }
 

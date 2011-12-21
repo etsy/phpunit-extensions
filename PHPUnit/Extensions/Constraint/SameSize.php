@@ -21,7 +21,7 @@ extends PHPUnit_Framework_Constraint {
     public function toString() {
         return sprintf(
             'is same size as %s', 
-            PHPUnit_Util_Type::toString($this->expected)
+            PHPUnit_Util_Type::export($this->expected)
         );
     }
 }

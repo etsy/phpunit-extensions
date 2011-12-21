@@ -26,7 +26,7 @@ implements PHPUnit_Framework_MockObject_Stub {
         PHPUnit_Framework_Assert::fail(
             sprintf(
                 'No return value defined for %s', 
-                PHPUnit_Util_Type::toString($invocation->parameters)));
+                PHPUnit_Util_Type::export($invocation->parameters)));
     }
 
     public function toString() {
