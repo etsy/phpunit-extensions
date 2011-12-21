@@ -28,7 +28,7 @@ extends PHPUnit_Framework_Constraint {
     public function toString() {
        return sprintf(
            'equals ignoring whitespace %s', 
-           PHPUnit_Util_Type::toString($this->normalize($this->expected)));
+           PHPUnit_Util_Type::export($this->normalize($this->expected)));
     }
 }
 
