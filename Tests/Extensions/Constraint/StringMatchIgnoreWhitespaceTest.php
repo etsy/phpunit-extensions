@@ -12,42 +12,45 @@ extends PHPUnit_Framework_TestCase {
         $constraint =
             new PHPUnit_Extensions_Constraint_StringMatchIgnoreWhitespace(
                 ' trim ');
-        $this->assertTrue($constraint->evaluate('trim'));
+        $constraint->evaluate('trim');
     }
 
     public function testEvaluate_trimActual() {
         $constraint =
             new PHPUnit_Extensions_Constraint_StringMatchIgnoreWhitespace(
                 'trim');
-        $this->assertTrue($constraint->evaluate(' trim '));
+        $constraint->evaluate(' trim ');
     }
 
     public function testEvaluate_newlineExpected() {
         $constraint =
             new PHPUnit_Extensions_Constraint_StringMatchIgnoreWhitespace(
                 "new\nline");
-        $this->assertTrue($constraint->evaluate('new line'));
+        $constraint->evaluate('new line');
     }
 
     public function testEvaluate_newlineActual() {
         $constraint =
             new PHPUnit_Extensions_Constraint_StringMatchIgnoreWhitespace(
                 'new line');
-        $this->assertTrue($constraint->evaluate("new\nline"));
+        $constraint->evaluate("new\nline");
     }
 
     public function testEvaluate_equal() {
         $constraint =
             new PHPUnit_Extensions_Constraint_StringMatchIgnoreWhitespace(
                 'are equal');
-        $this->assertTrue($constraint->evaluate('are equal'));
+        $constraint->evaluate('are equal');
     }
 
+    /**
+     * @expectedException PHPUnit_Framework_AssertionFailedError
+     */
     public function testEvaluate_notEqual() {
         $constraint =
             new PHPUnit_Extensions_Constraint_StringMatchIgnoreWhitespace(
                 'not equal');
-        $this->assertFalse($constraint->evaluate('are not equal'));
+        $constraint->evaluate('are not equal');
     }
 
     public function testFailureDescription_throughAssert() {
@@ -58,8 +61,8 @@ extends PHPUnit_Framework_TestCase {
             $constraint->evaluate("\ttab");
         } catch (PHPUnit_Framework_ExpectationFailedException $e) {
             $this->assertEquals(
-                'Failed asserting that <string:tab>'
-                . ' equals ignoring whitespace <string:new line>.',
+                "Failed asserting that '\ttab'"
+                . ' equals ignoring whitespace \'new line\'.',
                 $e->getMessage());
         }
     }
@@ -69,7 +72,7 @@ extends PHPUnit_Framework_TestCase {
             new PHPUnit_Extensions_Constraint_StringMatchIgnoreWhitespace(
                 'expected string');
         $this->assertEquals(
-             'equals ignoring whitespace <string:expected string>',
+             'equals ignoring whitespace \'expected string\'',
              $constraint->toString());
     }
 }

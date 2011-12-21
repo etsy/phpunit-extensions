@@ -1,6 +1,9 @@
 <?php
 
 require_once 'PHPUnit/Extensions/Assert/More.php';
+require_once 'PHPUnit/Extensions/Constraint/ArrayEqualsNoOrder.php';
+require_once 'PHPUnit/Extensions/Constraint/HasItems.php';
+require_once 'PHPUnit/Extensions/Constraint/StringMatchIgnoreWhitespace.php';
 
 /**
  * @covers PHPUnit_Extensions_Assert_More
@@ -20,21 +23,6 @@ class Tests_Extensions_Assert_MoreTest extends PHPUnit_Framework_TestCase {
         PHPUnit_Extensions_Assert_More::assertHasItems(
             array(4),
             array(1, 2, 3));
-    }
-
-    public function testAssertSameSize_passes() {
-        PHPUnit_Extensions_Assert_More::assertSameSize(
-            array(1, 2, 3),
-            array(4, 5, 6));
-    }
-
-    /**
-     * @expectedException PHPUnit_Framework_AssertionFailedError
-     */
-    public function testAssertSameSize_fails() {
-        PHPUnit_Extensions_Assert_More::assertSameSize(
-            array(1, 2, 3),
-            array (1, 2, 3, 4));
     }
 
     public function testAssertArrayEqualsNoOrder_passes() {

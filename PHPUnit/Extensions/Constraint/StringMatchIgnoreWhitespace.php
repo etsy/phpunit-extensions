@@ -20,10 +20,6 @@ extends PHPUnit_Framework_Constraint {
         return implode(' ', preg_split('/\s+/', trim($string)));
     }
 
-    protected function failureDescription($string) {
-        return parent::failureDescription($this->normalize($string));
-    }
-
     public function toString() {
        return sprintf(
            'equals ignoring whitespace %s', 

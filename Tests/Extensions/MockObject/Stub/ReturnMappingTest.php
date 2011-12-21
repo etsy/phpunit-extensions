@@ -1,6 +1,11 @@
 <?php
 
-class Tests_Extensions_MockObject_Stub_ReturnMapTest
+require_once 'PHPUnit/Extensions/MockObject/Stub/ReturnMapping.php';
+require_once 'PHPUnit/Extensions/MockObject/Stub/ReturnMapping/Builder.php';
+require_once 'PHPUnit/Extensions/MockObject/Stub/ReturnMapping/Entry.php';
+require_once 'PHPUnit/Extensions/MockObject/Stub/ReturnMapping/EntryBuilder.php';
+
+class Tests_Extensions_MockObject_Stub_ReturnMappingTest
 extends PHPUnit_Framework_TestCase {
 
     /**

@@ -25,20 +25,6 @@ class PHPUnit_Extensions_Assert_More {
     }
 
     /**
-     * Asserts that the two arrays are the same size.
-     *
-     * @param array $expected
-     * @param array $actual
-     * @param string $message
-     */
-    public static function assertSameSize($expected, $actual, $message='') {
-        PHPUnit_Framework_Assert::assertThat(
-            $actual,
-            new PHPUnit_Extensions_Constraint_SameSize($expected),
-            $message);
-    }
-
-    /**
      * Asserts that the two arrays contain the same exact contents,
      * but are not necessarily the same order.
      * 

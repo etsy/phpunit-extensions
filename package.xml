@@ -15,10 +15,10 @@
   <email>github@elblinkin.info</email>
   <active>yes</active>
  </lead>
- <date>2011-05-01</date>
+ <date>2011-12-21</date>
  <version>
-  <release>0.1.2</release>
-  <api>0.1.2</api>
+  <release>0.2.1</release>
+  <api>0.2.1</api>
  </version>
  <stability>
   <release>beta</release>
@@ -38,7 +38,6 @@
       <dir name="Constraint">
        <file name="ArrayEqualsNoOrder.php" role="php" />
        <file name="HasItems.php" role="php" />
-       <file name="SameSize.php" role="php" />
        <file name="StringMatchIgnoreWhitespace.php" role="php" />
       </dir>
       <dir name="MockObject">
@@ -59,13 +58,6 @@
        <file name="TestCase.php" role="php" />
        <file name="Tester.php" role="php" />
       </dir>
-      <dir name="TicketListener">
-       <dir name="Jira">
-        <file baseinstalldir="/" name="Client.php" role="php" />
-        <file baseinstalldir="/" name="StatusConverter.php" role="php" />
-       </dir>
-       <file baseinstalldir="/" name="Jira.php" role="php" />
-      </dir>
      </dir>
     </dir>
    </dir>
@@ -81,7 +73,7 @@
    <package>
     <name>PHPUnit</name>
     <channel>pear.phpunit.de</channel>
-    <min>3.5.12</min>
+    <min>3.6.1</min>
    </package>
   </required>
  </dependencies>
