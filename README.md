@@ -15,6 +15,9 @@ Installation
 -------------------
 See [PEAR Channel](http://etsy.github.com/phpunit-extensions)
 
+Version > 0.3.x requires PHP 5.3.6
+Version < 0.2.x requires PHP 5.2.9
+
 Contribute
 --------------------
 
