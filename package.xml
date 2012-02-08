@@ -15,10 +15,10 @@
   <email>github@elblinkin.info</email>
   <active>yes</active>
  </lead>
- <date>2011-12-21</date>
+ <date>2012-02-08</date>
  <version>
-  <release>0.2.1</release>
-  <api>0.2.1</api>
+  <release>0.3.1</release>
+  <api>0.3.1</api>
  </version>
  <stability>
   <release>beta</release>
@@ -39,6 +39,9 @@
        <file name="ArrayEqualsNoOrder.php" role="php" />
        <file name="HasItems.php" role="php" />
        <file name="StringMatchIgnoreWhitespace.php" role="php" />
+      </dir>
+      <dir name="Mockery">
+        <file name="TestCase.php" role="php" />
       </dir>
       <dir name="MockObject">
         <dir name="Stub">
@@ -65,7 +68,7 @@
  <dependencies>
   <required>
    <php>
-    <min>5.2.9</min>
+    <min>5.3.6</min>
    </php>
    <pearinstaller>
     <min>1.9.1</min>
