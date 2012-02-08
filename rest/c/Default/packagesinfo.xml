@@ -13,6 +13,10 @@
 
         <a>
             <r>
+                <v>0.3.1</v>
+                <s>beta</s>
+            </r>
+            <r>
                 <v>0.2.1</v>
                 <s>beta</s>
             </r>
@@ -31,6 +35,10 @@
 
         </a>
 
+        <deps>
+            <v>0.3.1</v>
+            <d>a:1:{s:8:"required";a:3:{s:3:"php";a:1:{s:3:"min";s:5:"5.3.6";}s:13:"pearinstaller";a:1:{s:3:"min";s:5:"1.9.1";}s:7:"package";a:3:{s:4:"name";s:7:"PHPUnit";s:7:"channel";s:15:"pear.phpunit.de";s:3:"min";s:5:"3.6.1";}}}</d>
+        </deps>
         <deps>
             <v>0.2.1</v>
             <d>a:1:{s:8:"required";a:3:{s:3:"php";a:1:{s:3:"min";s:5:"5.2.9";}s:13:"pearinstaller";a:1:{s:3:"min";s:5:"1.9.1";}s:7:"package";a:3:{s:4:"name";s:7:"PHPUnit";s:7:"channel";s:15:"pear.phpunit.de";s:3:"min";s:5:"3.6.1";}}}</d>

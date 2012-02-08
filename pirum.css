@@ -13,9 +13,13 @@ small { font-size: 80% }
 h1, h2, h3 { font-family:Georgia,Times New Roman,serif; letter-spacing: -0.03em; }
 h1 { font-size: 35px; margin-top: 20px; margin-bottom: 30px }
 h2 { font-size: 30px; margin-bottom: 20px; margin-top: 15px }
-h3 { font-size: 26px; margin-bottom: 10px }
+h3 { font-size: 26px; margin-bottom: 10px; margin-top: 20px }
 pre { background-color: #000; color: #fff; margin: 5px 0; overflow: auto; padding: 10px; font-family: monospace }
 #ft { margin-top: 10px }
 ul { margin-top: 5px }
 li strong { color: #666 }
-p { margin-bottom: 5px }
+p { margin-bottom: 10px }
+table { width: 100% }
+table th { width: 20% }
+table td, table th { padding: 4px; border: 1px solid #ccc }
+th { background-color: #eee }

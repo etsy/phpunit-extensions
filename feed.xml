@@ -1,54 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:base="http://etsy.github.com/phpunit-extensions/">
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://etsy.github.com/phpunit-extensions</id>
+    <updated>2012-02-08T14:40:54-05:00</updated>
     <title>Etsy's PHPUnit Extensions PEAR Channel Latest Releases</title>
-    <link href="http://etsy.github.com/phpunit-extensions/" />
+    <link href="http://etsy.github.com/phpunit-extensions/feed.xml" rel="self" />
     <author>
-        <name>http://etsy.github.com/phpunit-extensions/</name>
+        <name>http://etsy.github.com/phpunit-extensions</name>
     </author>
 
     <entry>
+        <title>Etsy_PHPUnit_Extensions 0.3.1 (beta)</title>
+        <link href="http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.3.1.tgz" />
+        <id>http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.3.1.tgz</id>
+        <author>
+            <name>elblinkin</name>
+        </author>
+        <updated>2012-02-08T19:32:46-05:00</updated>
+        <content>
+            
+-
+ 
+        </content>
+    </entry>    <entry>
         <title>Etsy_PHPUnit_Extensions 0.2.1 (beta)</title>
-        <link href="http://etsy.github.com/phpunit-extensions//get/Etsy_PHPUnit_Extensions-0.2.1.tgz" />
-        <id>Etsy_PHPUnit_Extensions-0.2.1</id>
+        <link href="http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.2.1.tgz" />
+        <id>http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.2.1.tgz</id>
         <author>
             <name>elblinkin</name>
         </author>
         <updated>2011-12-21T22:17:43-05:00</updated>
         <content>
-            Etsy extensions for PHPUnit.
+            
+-
+ 
         </content>
     </entry>    <entry>
         <title>Etsy_PHPUnit_Extensions 0.1.2 (beta)</title>
-        <link href="http://etsy.github.com/phpunit-extensions//get/Etsy_PHPUnit_Extensions-0.1.2.tgz" />
-        <id>Etsy_PHPUnit_Extensions-0.1.2</id>
+        <link href="http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.1.2.tgz" />
+        <id>http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.1.2.tgz</id>
         <author>
             <name>elblinkin</name>
         </author>
         <updated>2011-05-02T12:57:20-04:00</updated>
         <content>
-            Etsy extensions for PHPUnit.
+            
+-
+ 
         </content>
     </entry>    <entry>
         <title>Etsy_PHPUnit_Extensions 0.1.1 (beta)</title>
-        <link href="http://etsy.github.com/phpunit-extensions//get/Etsy_PHPUnit_Extensions-0.1.1.tgz" />
-        <id>Etsy_PHPUnit_Extensions-0.1.1</id>
+        <link href="http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.1.1.tgz" />
+        <id>http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.1.1.tgz</id>
         <author>
             <name>elblinkin</name>
         </author>
         <updated>2011-03-29T15:33:36-04:00</updated>
         <content>
-            Etsy extensions for PHPUnit.
+            
+-
+ 
         </content>
     </entry>    <entry>
         <title>Etsy_PHPUnit_Extensions 0.1.0 (beta)</title>
-        <link href="http://etsy.github.com/phpunit-extensions//get/Etsy_PHPUnit_Extensions-0.1.0.tgz" />
-        <id>Etsy_PHPUnit_Extensions-0.1.0</id>
+        <link href="http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.1.0.tgz" />
+        <id>http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.1.0.tgz</id>
         <author>
             <name>elblinkin</name>
         </author>
         <updated>2011-02-27T19:48:24-05:00</updated>
         <content>
-            Etsy extensions for PHPUnit.
+            
+-
+ 
         </content>
     </entry>
 </feed>
