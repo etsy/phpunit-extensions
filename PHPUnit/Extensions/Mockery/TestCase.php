@@ -31,21 +31,23 @@ class PHPUnit_Extensions_Mockery_TestCase extends PHPUnit_Framework_TestCase {
     
     protected function verifyMockObjects() {
         $container = Mockery::getContainer();
-        $reflected_container = new ReflectionClass($container);
-        $reflected_mocks = $reflected_container->getProperty('_mocks');
-        $reflected_mocks->setAccessible(true);
-        $mocks = $reflected_mocks->getValue($container);
-        foreach ($mocks as $mock) {
-            $reflected_mock = new ReflectionClass($mock);
-            $reflected_expectations =
-                $reflected_mock->getProperty('_mockery_expectations');
-            $reflected_expectations->setAccessible(true);
-            $expectations = $reflected_expectations->getValue($mock);
-            foreach ($expectations as $director) {
-                $this->addToAssertionCount(count($director->getExpectations()));
+        if (isset($container)) {
+            $reflected_container = new ReflectionClass($container);
+            $reflected_mocks = $reflected_container->getProperty('_mocks');
+            $reflected_mocks->setAccessible(true);
+            $mocks = $reflected_mocks->getValue($container);
+            foreach ($mocks as $mock) {
+                $reflected_mock = new ReflectionClass($mock);
+                $reflected_expectations =
+                    $reflected_mock->getProperty('_mockery_expectations');
+                $reflected_expectations->setAccessible(true);
+                $expectations = $reflected_expectations->getValue($mock);
+                foreach ($expectations as $director) {
+                    $this->addToAssertionCount(count($director->getExpectations()));
+                }
             }
+            Mockery::close();
         }
-        Mockery::close();
         
         
         parent::verifyMockObjects();

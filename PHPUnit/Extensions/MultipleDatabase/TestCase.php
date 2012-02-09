@@ -5,7 +5,7 @@
  * populate multiple databases for tests dependent upon databases.
  */
 abstract class PHPUnit_Extensions_MultipleDatabase_TestCase 
-extends PHPUnit_Framework_TestCase {
+extends PHPUnit_Extensions_Mockery_TestCase {
 
     private $testers;
 
