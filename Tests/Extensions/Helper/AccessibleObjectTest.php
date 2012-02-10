@@ -74,13 +74,12 @@ class Tests_Extensions_Helper_AccessibleObject_Object {
 
     public $public_var;
     
+    /** @accessibleForTesting cannot have more on line */
     private function privateMethod() {
          return 'private called';
     }
     
-    /**
-     * @accessibleForTesting
-     */
+    /** @accessibleForTesting */
     private function accessiblePrivateMethod() {
          return 'accessible private called';
     }

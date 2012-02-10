@@ -2,7 +2,7 @@
 
 class PHPUnit_Extensions_Helper_AccessibleObject {
 
-    const REGEX_ACCESSIBLE = '/@accessibleForTesting/';
+    const REGEX_ACCESSIBLE = '/@accessibleForTesting\s*$/';
     
     private $object;
     private $reflection_class;
@@ -39,10 +39,11 @@ class PHPUnit_Extensions_Helper_AccessibleObject {
     }
     
     private function isAccessible($reflected) {
+        $docblock = substr($reflected->getDocComment(), 3, -2);
         return $reflected->isPublic()
             || preg_match(
                    self::REGEX_ACCESSIBLE,
-                   $reflected->getDocComment(),
+                   $docblock,
                    $matches
                );
     }
