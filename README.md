@@ -7,6 +7,7 @@ Tutorials
 --------------------
 * [Asserts](https://github.com/etsy/phpunit-extensions/wiki/Asserts)
 * [Constraints](https://github.com/etsy/phpunit-extensions/wiki/Constraints)
+* [Helpers](https://github.com/etsy/phpunit-extensions/wiki/Helpers)
 * [Mock Object](https://github.com/etsy/phpunit-extensions/wiki/Mock-Object)
 * [Mockery](https://github.com/etsy/phpunit-extensions/wiki/Mockery)
 * [Multiple Database](https://github.com/etsy/phpunit-extensions/wiki/Multiple-Database)
@@ -16,7 +17,9 @@ Installation
 -------------------
 See [PEAR Channel](http://etsy.github.com/phpunit-extensions)
 
+
 Version > 0.3.x requires PHP 5.3.6
+
 Version < 0.2.x requires PHP 5.2.9
 
 Contribute
