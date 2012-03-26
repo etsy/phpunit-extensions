@@ -36,16 +36,6 @@ extends PHPUnit_Framework_TestSuite {
     /**
      * {@inheritDoc}
      */
-	public function count() {
-		if (!isset($this->_count)) {
-			$this->_count = parent::count();
-		}
-		return $this->_count;
-	}
-
-    /**
-     * {@inheritDoc}
-     */
 	public function run(
 		PHPUnit_Framework_TestResult $result = null,
 		$filter = false,
