@@ -15,10 +15,10 @@
   <email>github@elblinkin.info</email>
   <active>yes</active>
  </lead>
- <date>2012-02-09</date>
+ <date>2012-03-27</date>
  <version>
-  <release>0.3.2</release>
-  <api>0.3.2</api>
+  <release>0.4.1</release>
+  <api>0.4.1</api>
  </version>
  <stability>
   <release>beta</release>
@@ -31,6 +31,13 @@
     <file name="LICENSE" role="doc" />
     <file name="README.md" role="doc" />
     <dir name="PHPUnit">
+     <dir name="Experimental">
+      <file name="FileSystemTestSuite.php" role="php" />
+      <dir name="PHPUI">
+       <file name="Command.php" role="php" />
+       <file name="ResultPrinter.php" role="php" />
+      </dir>
+     </dir>
      <dir name="Extensions">
       <dir name="Assert">
        <file name="More.php" role="php" />
@@ -76,7 +83,7 @@
    <package>
     <name>PHPUnit</name>
     <channel>pear.phpunit.de</channel>
-    <min>3.6.1</min>
+    <min>3.6.10</min>
    </package>
    <package>
     <name>Hamcrest</name>
