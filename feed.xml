@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://etsy.github.com/phpunit-extensions</id>
-    <updated>2012-02-10T11:45:35-05:00</updated>
+    <updated>2012-03-27T14:53:53-04:00</updated>
     <title>Etsy's PHPUnit Extensions PEAR Channel Latest Releases</title>
     <link href="http://etsy.github.com/phpunit-extensions/feed.xml" rel="self" />
     <author>
@@ -9,6 +9,19 @@
     </author>
 
     <entry>
+        <title>Etsy_PHPUnit_Extensions 0.4.1 (beta)</title>
+        <link href="http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.4.1.tgz" />
+        <id>http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.4.1.tgz</id>
+        <author>
+            <name>elblinkin</name>
+        </author>
+        <updated>2012-03-27T18:52:22-04:00</updated>
+        <content>
+            
+-
+ 
+        </content>
+    </entry>    <entry>
         <title>Etsy_PHPUnit_Extensions 0.3.2 (beta)</title>
         <link href="http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.3.2.tgz" />
         <id>http://etsy.github.com/phpunit-extensions/get/Etsy_PHPUnit_Extensions-0.3.2.tgz</id>

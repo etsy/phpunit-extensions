@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
+ <name>Etsy_PHPUnit_Extensions</name>
+ <channel>etsy.github.com/phpunit-extensions</channel>
+ <summary>Etsy extensions for PHPUnit.</summary>
+ <description>Etsy extensions for PHPUnit.</description>
+ <lead>
+  <name>Laura Beth Lincoln Denker</name>
+  <user>elblinkin</user>
+  <email>github@elblinkin.info</email>
+  <active>yes</active>
+ </lead>
+ <date>2012-03-27</date>
+ <time>18:52:22</time>
+ <version>
+  <release>0.4.1</release>
+  <api>0.4.1</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/mit-license.php">MIT</license>
+ <notes>
+-
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="6a56632a065f664e5004439a052a2047" name="PHPUnit/Experimental/PHPUI/Command.php" role="php" />
+   <file md5sum="5105feed83571143aa6d70cb3d34deea" name="PHPUnit/Experimental/PHPUI/ResultPrinter.php" role="php" />
+   <file md5sum="f5aae157c886291678a39b9ff7579f76" name="PHPUnit/Experimental/FileSystemTestSuite.php" role="php" />
+   <file md5sum="98c661d2d54cf189787e1afd414cf87e" name="PHPUnit/Extensions/Assert/More.php" role="php" />
+   <file md5sum="df4049532ab5556c697d7b7352bd5aa6" name="PHPUnit/Extensions/Constraint/ArrayEqualsNoOrder.php" role="php" />
+   <file md5sum="fbffeba95a39c57d74b55b5a547f504c" name="PHPUnit/Extensions/Constraint/HasItems.php" role="php" />
+   <file md5sum="3cfd90de2fd20ce97649cce3cb97b7cc" name="PHPUnit/Extensions/Constraint/StringMatchIgnoreWhitespace.php" role="php" />
+   <file md5sum="2928b22eba76232f2ce73ab1f03bac30" name="PHPUnit/Extensions/Mockery/TestCase.php" role="php" />
+   <file md5sum="01211996c19fafd8afa3f3464eda4855" name="PHPUnit/Extensions/MockObject/Stub/ReturnMapping/Builder.php" role="php" />
+   <file md5sum="abe7b5e22faad1922d79ac2d76689d65" name="PHPUnit/Extensions/MockObject/Stub/ReturnMapping/Entry.php" role="php" />
+   <file md5sum="9538fda41bc97245f88606efca8938dc" name="PHPUnit/Extensions/MockObject/Stub/ReturnMapping/EntryBuilder.php" role="php" />
+   <file md5sum="6700f80963ede926d340371c80cf7529" name="PHPUnit/Extensions/MockObject/Stub/ReturnMapping.php" role="php" />
+   <file md5sum="d2706804969a28b6c68e0a9afad8505c" name="PHPUnit/Extensions/MultipleDatabase/DatabaseConfig/Builder.php" role="php" />
+   <file md5sum="160a6542379e75e78d2c155d1f67f7bd" name="PHPUnit/Extensions/MultipleDatabase/DatabaseConfig.php" role="php" />
+   <file md5sum="9d763c772205c7912adfb091e7f4a7e0" name="PHPUnit/Extensions/MultipleDatabase/TestCase.php" role="php" />
+   <file md5sum="1b5540282210365e9ca78c370d4bb546" name="PHPUnit/Extensions/MultipleDatabase/Tester.php" role="php" />
+   <file md5sum="7e3bda0a89816594c790339791a106d4" name="LICENSE" role="doc" />
+   <file md5sum="37b73baff544388428abbf4968a509c1" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.6</min>
+   </php>
+   <pearinstaller>
+    <min>1.9.1</min>
+   </pearinstaller>
+   <package>
+    <name>PHPUnit</name>
+    <channel>pear.phpunit.de</channel>
+    <min>3.6.10</min>
+   </package>
+   <package>
+    <name>Hamcrest</name>
+    <channel>hamcrest.googlecode.com/svn/pear</channel>
+    <min>1.0.0</min>
+   </package>
+   <package>
+    <name>Mockery</name>
+    <channel>pear.survivethedeepend.com</channel>
+    <min>0.6.0</min>
+   </package>
+  </required>
+ </dependencies>
+ <phprelease />
+</package>
