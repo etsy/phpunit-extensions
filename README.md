@@ -12,6 +12,7 @@ Tutorials
 * [Mockery](https://github.com/etsy/phpunit-extensions/wiki/Mockery)
 * [Multiple Database](https://github.com/etsy/phpunit-extensions/wiki/Multiple-Database)
 * [Ticket Listener](https://github.com/etsy/phpunit-extensions/wiki/Ticket-Listener)
+* [PHPUI Command](https://github.com/etsy/phpunit-extensions/wiki/PHPUI-Command) Experimental!!
 
 Installation
 -------------------
