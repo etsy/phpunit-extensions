@@ -2,18 +2,18 @@
 
 require_once 'PHPUnit/Autoload.php';
 
-class PHPUnit_Extensions_PHPUI_Command {
+class PHPUnit_Experimental_PHPUI_Command {
 
     private $filename;
 
     private $arguments;
     private $result;
-    private $suite;
+    private $suites;
 
     public function __construct(
     	$filename,
     	PHPUnit_Framework_TestResult $result = null,
-    	PHPUnit_Framework_TestSuite $suite = null,
+    	array $suites = array(),
     	array $arguments = array(
     		'verbose' => false,
     		'debug' => false,
@@ -26,7 +26,7 @@ class PHPUnit_Extensions_PHPUI_Command {
     ) {
     	$this->filename = $filename;
     	$this->result = ($result === null) ? new PHPUnit_Framework_TestResult() : $result;
-    	$this->suite = ($suite === null) ? new PHPUnit_Framework_TestSuite() : $suite;
+    	$this->suites = $suites;
     	$this->arguments = $arguments;
     }
     
@@ -247,7 +247,10 @@ class PHPUnit_Extensions_PHPUI_Command {
     }
 
     public function addTestSuite(PHPUnit_Framework_TestSuite $test_suite) {
-        $this->suite->addTestSuite($test_suite);
+        if (!isset($this->suites)) {
+            $this->suites = array();
+        }
+        $this->suites[] = $test_suite;
         return $this;
     }
 
@@ -261,7 +264,7 @@ class PHPUnit_Extensions_PHPUI_Command {
     		$this->coverage_filter = new PHP_CodeCoverage_Filter();
     	}
 
-        $printer = new PHPUnit_Extensions_PHPUI_ResultPrinter(
+        $printer = new PHPUnit_Experimental_PHPUI_ResultPrinter(
     	    NULL,
     		$this->arguments['verbose'],
     		$this->arguments['colors'],
@@ -271,8 +274,10 @@ class PHPUnit_Extensions_PHPUI_Command {
     	$this->result->addListener(new PHPUnit_Util_DeprecatedFeature_Logger);
 
         try {
-    		$this->runSuite($this->suite);
-    		unset($this->suite);
+            foreach ($this->suites as $suite) {
+    		    $this->runSuite($suite);
+    		    unset($suite);
+            }
     	    $this->result->flushListeners();
     	    $printer->printResult($this->result);
         } catch (PHPUnit_Framework_Exception $e) {

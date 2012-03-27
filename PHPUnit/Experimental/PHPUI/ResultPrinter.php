@@ -1,6 +1,6 @@
 <?php
 
-class PHPUnit_Extensions_PHPUI_ResultPrinter
+class PHPUnit_Experimental_PHPUI_ResultPrinter
 extends PHPUnit_TextUI_ResultPrinter {
 	
 	protected function writeProgress($progress) {

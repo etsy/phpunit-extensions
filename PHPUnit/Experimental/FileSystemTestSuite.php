@@ -1,6 +1,6 @@
 <?php
 
-class PHPUnit_Extensions_FileSystemTestSuite
+class PHPUnit_Experimental_FileSystemTestSuite
 extends PHPUnit_Framework_TestSuite {
 	
 	private $root_directory;
@@ -11,8 +11,6 @@ extends PHPUnit_Framework_TestSuite {
 
 	private $prefix;
 	private $suffix;
-
-	private $_count;
 
 	public function __construct(
 		$root_directory,
