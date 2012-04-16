@@ -47,6 +47,9 @@
        <file name="HasItems.php" role="php" />
        <file name="StringMatchIgnoreWhitespace.php" role="php" />
       </dir>
+      <dir name="Helper">
+       <file name="AccessibleObject.php" role="php" />
+      </dir>
       <dir name="Mockery">
         <file name="TestCase.php" role="php" />
       </dir>
