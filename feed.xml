@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://etsy.github.com/phpunit-extensions</id>
-    <updated>2012-04-16T09:35:32-04:00</updated>
+    <updated>2012-03-27T14:53:53-04:00</updated>
     <title>Etsy's PHPUnit Extensions PEAR Channel Latest Releases</title>
     <link href="http://etsy.github.com/phpunit-extensions/feed.xml" rel="self" />
     <author>
