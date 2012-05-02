@@ -1,6 +1,6 @@
 <?php
 
-PHPUnit_Util_Filter::addFileToFilter(__FILE__, 'PHPUNIT');
+require_once 'PHPUnit/Extensions/Database/DataSet/AbstractDataSet.php';
 
 class PHPUnit_Extensions_Database_DataSet_ArrayDataSet
 extends PHPUnit_Extensions_Database_DataSet_AbstractDataSet {
@@ -12,11 +12,11 @@ extends PHPUnit_Extensions_Database_DataSet_AbstractDataSet {
 		array $tables=array()
 	) {
 		$this->tables = $tables;
-		foreach ($data as $table_name => $row) {
+		foreach ($data as $table_name => $rows) {
 			$table = new PHPUnit_Extensions_Database_DataSet_DefaultTable(
 				new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData(
 				    $table_name,
-				    $this->getColumns($rows);
+				    $this->getColumns($rows)
 			    )
 			);
 			foreach ($rows as $row) {

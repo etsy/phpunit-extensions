@@ -47,6 +47,11 @@
        <file name="HasItems.php" role="php" />
        <file name="StringMatchIgnoreWhitespace.php" role="php" />
       </dir>
+      <dir name="Database">
+       <dir name="DataSet">
+        <file name="ArrayDataSet" role="php" />
+       </dir>
+      </dir>
       <dir name="Helper">
        <file name="AccessibleObject.php" role="php" />
       </dir>
