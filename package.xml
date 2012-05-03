@@ -15,10 +15,10 @@
   <email>github@elblinkin.info</email>
   <active>yes</active>
  </lead>
- <date>2012-04-16</date>
+ <date>2012-05-03</date>
  <version>
-  <release>0.4.2</release>
-  <api>0.4.2</api>
+  <release>0.5.0</release>
+  <api>0.5.0</api>
  </version>
  <stability>
   <release>beta</release>
@@ -44,12 +44,13 @@
       </dir>
       <dir name="Constraint">
        <file name="ArrayEqualsNoOrder.php" role="php" />
+       <file name="EqualsClosure.php" role="php" />
        <file name="HasItems.php" role="php" />
        <file name="StringMatchIgnoreWhitespace.php" role="php" />
       </dir>
       <dir name="Database">
        <dir name="DataSet">
-        <file name="ArrayDataSet" role="php" />
+        <file name="ArrayDataSet.php" role="php" />
        </dir>
       </dir>
       <dir name="Helper">
