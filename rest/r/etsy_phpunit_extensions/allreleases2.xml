@@ -3,6 +3,11 @@
     <p>Etsy_PHPUnit_Extensions</p>
     <c>etsy.github.com/phpunit-extensions</c>
     <r>
+        <v>0.5.0</v>
+        <s>beta</s>
+        <m>5.3.6</m>
+    </r>
+    <r>
         <v>0.4.2</v>
         <s>beta</s>
         <m>5.3.6</m>
