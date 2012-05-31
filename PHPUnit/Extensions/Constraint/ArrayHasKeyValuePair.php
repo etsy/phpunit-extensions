@@ -34,10 +34,10 @@ class PHPUnit_Extensions_Constraint_ArrayHasKeyValuePair extends PHPUnit_Framewo
      */
     protected function matches($other)
     {
-        if (array_key_exists($this->key, $other) && $other[$this->key] === $this->value) {
-            return true;
+        if (!(is_array($other) || $other instanceof ArrayAccess)) {
+            return false;
         }
-        return false;
+        return (array_key_exists($this->key, $other) && ($other[$this->key] === $this->value));
     }
 
     /**
