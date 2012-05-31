@@ -29,7 +29,7 @@ class PHPUnit_Extensions_Constraint_ArrayHasKeyValuePair extends PHPUnit_Framewo
      * Evaluates the constraint for parameter $other. Returns TRUE if the
      * constraint is met, FALSE otherwise.
      *
-     * @param mixed $other Value or object to evaluate.
+     * @param array|ArrayAccess $other Value or object to evaluate.
      * @return bool
      */
     protected function matches($other)
