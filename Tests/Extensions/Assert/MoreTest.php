@@ -2,6 +2,7 @@
 
 require_once 'PHPUnit/Extensions/Assert/More.php';
 require_once 'PHPUnit/Extensions/Constraint/ArrayEqualsNoOrder.php';
+require_once 'PHPUnit/Extensions/Constraint/ArrayHasKeyValuePair.php';
 require_once 'PHPUnit/Extensions/Constraint/HasItems.php';
 require_once 'PHPUnit/Extensions/Constraint/StringMatchIgnoreWhitespace.php';
 
@@ -14,6 +15,23 @@ class Tests_Extensions_Assert_MoreTest extends PHPUnit_Framework_TestCase {
         PHPUnit_Extensions_Assert_More::assertHasItems(
             array(1, 2, 3),
             array(3, 1, 0, 2));
+    }
+
+    /**
+     * @expectedException PHPUnit_Framework_AssertionFailedError
+     */
+    public function testAssertArrayHasKeyValuePair_fails() {
+        PHPUnit_Extensions_Assert_More::assertArrayHasKeyValuePair(
+            'key',
+            'value',
+            array(1, 2, 3));
+    }
+
+    public function testAssertArrayHasKeyValuePair_passes() {
+        PHPUnit_Extensions_Assert_More::assertArrayHasKeyValuePair(
+            'key',
+            'value',
+            array('a', 3, 'key' => 'value'));
     }
 
     /**
