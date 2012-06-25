@@ -25,6 +25,23 @@ class PHPUnit_Extensions_Assert_More {
     }
 
     /**
+     * Asserts that the actual array contains a specified key/value
+     * pair.
+     *
+     * @param string|int $expectedKey
+     * @param mixed $expectedValue
+     * @param array $actual
+     * @param $message
+     */
+    public static function assertArrayHasKeyValuePair(
+        $expectedKey, $expectedValue, $actual, $message='') {
+        PHPUnit_Framework_Assert::assertThat(
+            $actual,
+            new PHPUnit_Extensions_Constraint_ArrayHasKeyValuePair($expectedKey, $expectedValue),
+            $message);
+    }
+
+    /**
      * Asserts that the two arrays contain the same exact contents,
      * but are not necessarily the same order.
      * 
