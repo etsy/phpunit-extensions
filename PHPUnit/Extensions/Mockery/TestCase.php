@@ -8,7 +8,7 @@ $loader->register();
 
 use \Mockery;
 
-class PHPUnit_Extensions_Mockery_TestCase extends PHPUnit_Framework_TestCase {
+abstract class PHPUnit_Extensions_Mockery_TestCase extends PHPUnit_Framework_TestCase {
 
     const REGEX_MOCK = '/@mockery\s+([a-zA-Z0-9._:-\\\\x7f-\xff]+)/';
     
