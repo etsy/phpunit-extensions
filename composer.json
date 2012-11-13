@@ -13,22 +13,32 @@
             "homepage": "http://elblinkin.info"
         }
     ],
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "hamcrest/hamcrest",
+                "version": "1.0.0",
+                "source": {
+                    "url": "http://hamcrest.googlecode.com/svn/pear/",
+                    "type": "pear"
+                },
+                "autoload": {
+                    "psr-0": {
+                        "Hamcrest": "hamcrest/hamcrest"
+                    },
+                    "files": ["hamcrest.php"]
+                }
+            }
+        }
+    ],
     "require": {
         "php": ">=5.3.6",
         "phpunit/phpunit": ">=3.6.10",
-        "mockery/mockery": ">=0.6.0"
+        "mockery/mockery": ">=0.6.0",
+        "hamcrest/hamcrest": "1.0.0"
     },
     "autoload": {
         "classmap": ["PHPUnit/"]
-    },
-    "repositories": {
-        "hamcrest googlecode com": {
-            "pear": {
-                "url": "http://hamcrest.googlecode.com/svn/pear"
-            }
-        }
-    },
-    "suggest": {
-        "Hamcrest": "1.0.0"
     }
 }
