@@ -16,10 +16,12 @@
     "require": {
         "php": ">=5.3.6",
         "phpunit/phpunit": ">=3.6.10",
-        "mockery/mockery": ">=0.6.0",
-        "hamcrest/hamcrest": "1.0.0"
+        "mockery/mockery": ">=0.6.0"
     },
     "autoload": {
         "classmap": ["PHPUnit/"]
+    },
+    "suggest": {
+        "hamcrest/hamcrest": "Hamcrest PHP should be added to github!"
     }
 }
