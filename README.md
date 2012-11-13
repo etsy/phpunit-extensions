@@ -17,12 +17,31 @@ Tutorials
 
 Installation
 -------------------
+
+### PEAR
+
 See [PEAR Channel](http://etsy.github.com/phpunit-extensions)
 
 
 Version > 0.3.x requires PHP 5.3.6
 
 Version < 0.2.x requires PHP 5.2.9
+
+### Composer
+
+To add the extensions as a local, per-project dependency to your project, simply add a dependency to your project's `composer.json` file. Here is a minimal example of a `composer.json` file that just defines a development-time dependency:
+
+    {
+        "repositories": [
+            {
+                "type": "vcs",
+                "url": "https://github.com/etsy/phpunit-extensions"
+            }
+        ]
+        "require-dev": {
+            "etsy/phpunit-extensions": "0.6.0"
+        }
+    }
 
 Contribute
 --------------------
