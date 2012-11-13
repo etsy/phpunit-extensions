@@ -4,32 +4,13 @@
     "type": "library",
     "description": "[PHPUnit](https://github.com/sebastianbergmann/phpunit) is the standard in testing PHP code. [Etsy](http://www.etsy.com) uses a lot of PHP and tests help us maintain quality while taking continuous deployment to the extreme. We have encountered a few use cases here an there that let us work with PHPUnit better and faster, and we thought it would be awesome to share with everyone.",
     "keywords": ["library", "testing", "phpunit", "extensions"],
-    "homepage": "https://github.com/coudenysj/phpunit-extensions",
+    "homepage": "https://github.com/etsy/phpunit-extensions",
     "license": "MIT",
     "authors": [
         {
             "name": "Laura Beth Lincoln Denker",
             "email": "github@elblinkin.info",
             "homepage": "http://elblinkin.info"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "hamcrest/hamcrest",
-                "version": "1.0.0",
-                "source": {
-                    "url": "http://hamcrest.googlecode.com/svn/pear/",
-                    "type": "pear"
-                },
-                "autoload": {
-                    "psr-0": {
-                        "Hamcrest": "hamcrest/hamcrest"
-                    },
-                    "files": ["hamcrest.php"]
-                }
-            }
         }
     ],
     "require": {
