@@ -1,0 +1,34 @@
+{
+    "name": "etsy/phpunit-extensions",
+    "version": "0.6.0",
+    "type": "library",
+    "description": "[PHPUnit](https://github.com/sebastianbergmann/phpunit) is the standard in testing PHP code. [Etsy](http://www.etsy.com) uses a lot of PHP and tests help us maintain quality while taking continuous deployment to the extreme. We have encountered a few use cases here an there that let us work with PHPUnit better and faster, and we thought it would be awesome to share with everyone.",
+    "keywords": ["library", "testing", "phpunit", "extensions"],
+    "homepage": "https://github.com/coudenysj/phpunit-extensions",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Laura Beth Lincoln Denker",
+            "email": "github@elblinkin.info",
+            "homepage": "http://elblinkin.info"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.6",
+        "phpunit/phpunit": ">=3.6.10",
+        "mockery/mockery": ">=0.6.0"
+    },
+    "autoload": {
+        "classmap": ["PHPUnit/"]
+    },
+    "repositories": {
+        "hamcrest googlecode com": {
+            "pear": {
+                "url": "http://hamcrest.googlecode.com/svn/pear"
+            }
+        }
+    },
+    "suggest": {
+        "Hamcrest": "1.0.0"
+    }
+}
