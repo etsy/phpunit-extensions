@@ -68,6 +68,13 @@ extends PHPUnit_Framework_TestCase {
         unset($this->accessibleObject->public_var);
         $this->assertFalse(isset($this->accessibleObject->public_var));
     }
+
+    public function testProtectedMultipleCommentMethod_accessible() {
+        $this->assertEquals(
+            'accessible protected multi comment called',
+            $this->accessibleObject->accessibleMultiCommentMethod()
+        );
+    }
 }
 
 class Tests_Extensions_Helper_AccessibleObject_Object {
@@ -97,5 +104,15 @@ class Tests_Extensions_Helper_AccessibleObject_Object {
     
     public function publicMethod() {
         return 'public called';
+    }
+
+    /**
+     * This is a test function
+     *
+     * @accessibleForTesting
+     * @return string
+     */
+    protected function accessibleMultiCommentMethod() {
+        return 'accessible protected multi comment called';
     }
 }

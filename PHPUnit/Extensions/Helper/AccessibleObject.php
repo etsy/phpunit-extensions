@@ -2,7 +2,7 @@
 
 class PHPUnit_Extensions_Helper_AccessibleObject {
 
-    const REGEX_ACCESSIBLE = '/@accessibleForTesting\s*$/';
+    const REGEX_ACCESSIBLE = '/@accessibleForTesting\s*$|\n/';
     
     private $object;
     private $reflection_class;
