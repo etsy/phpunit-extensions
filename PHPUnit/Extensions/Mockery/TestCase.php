@@ -1,7 +1,12 @@
 <?php
 
-require_once 'Mockery/Loader.php';
-require_once 'Hamcrest/Hamcrest.php';
+if (!class_exists('\Mockery\Loader')) {
+    require_once 'Mockery/Loader.php';
+}
+
+if (!class_exists('\Hamcrest\Description')) {
+    require_once 'Hamcrest/Hamcrest.php';
+}
 
 $loader = new \Mockery\Loader();
 $loader->register();
