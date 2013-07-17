@@ -5,7 +5,7 @@
     "keywords": [
         "etsy",
         "phpunit",
-        "extensions",
+        "extensions"
     ],
     "homepage": "http://github.com/etsy/phpunit-extensions",
     "license": "BSD-3-Clause",
