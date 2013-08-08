@@ -1,5 +1,5 @@
 {
-    "name": "sqmk/phpunit-extensions",
+    "name": "etsy/phpunit-extensions",
     "description": "Etsy PHPUnit Extensions",
     "type": "library",
     "keywords": [
