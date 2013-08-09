@@ -1,7 +1,8 @@
 <?php
 
-require_once 'Mockery/Loader.php';
-require_once 'Hamcrest/Hamcrest.php';
+if (!class_exists('\Mockery\Loader')) {
+    require_once 'Mockery/Loader.php';
+}
 
 $loader = new \Mockery\Loader();
 $loader->register();

@@ -1,0 +1,23 @@
+{
+    "name": "etsy/phpunit-extensions",
+    "description": "Etsy PHPUnit Extensions",
+    "type": "library",
+    "keywords": [
+        "etsy",
+        "phpunit",
+        "extensions"
+    ],
+    "homepage": "http://github.com/etsy/phpunit-extensions",
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.3.6",
+        "phpunit/PHPUnit": ">=3.6.10",
+        "mockery/mockery": "dev-master",
+        "davedevelopment/hamcrest-php": "dev-master"
+    },
+    "autoload": {
+        "classmap": [
+            "PHPUnit/"
+        ]
+    }
+}
