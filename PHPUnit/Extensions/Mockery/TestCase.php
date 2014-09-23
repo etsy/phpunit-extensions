@@ -1,14 +1,5 @@
 <?php
 
-if (!class_exists('\Mockery\Loader')) {
-    require_once 'Mockery/Loader.php';
-}
-
-$loader = new \Mockery\Loader();
-$loader->register();
-
-use \Mockery;
-
 abstract class PHPUnit_Extensions_Mockery_TestCase extends PHPUnit_Framework_TestCase {
 
     const REGEX_MOCK = '/@mockery\s+([a-zA-Z0-9._:-\\\\x7f-\xff]+)/';
