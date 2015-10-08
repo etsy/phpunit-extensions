@@ -1,5 +1,7 @@
 <?php
 
+use SebastianBergmann\Exporter\Exporter;
+
 /**
  * Constraint that asserts that the array it is evaluated for has a given key
  * and value combination.
@@ -15,6 +17,7 @@ class PHPUnit_Extensions_Constraint_ArrayHasKeyValuePair extends PHPUnit_Framewo
      */
     protected $value;
 
+    protected $exporter;
     /**
      * @param integer|string $key
      * @param mixed $value
@@ -23,6 +26,7 @@ class PHPUnit_Extensions_Constraint_ArrayHasKeyValuePair extends PHPUnit_Framewo
     {
         $this->key = $key;
         $this->value = $value;
+	$this->exporter = new Exporter;
     }
 
     /**
@@ -47,8 +51,8 @@ class PHPUnit_Extensions_Constraint_ArrayHasKeyValuePair extends PHPUnit_Framewo
      */
     public function toString()
     {
-        return 'has the key ' . PHPUnit_Util_Type::export($this->key) .
-                ' with the value ' . PHPUnit_Util_Type::export($this->value);
+        return 'has the key ' . $this->exporter->export($this->key) .
+                ' with the value ' . $this->exporter->export($this->value);
     }
 
     /**
