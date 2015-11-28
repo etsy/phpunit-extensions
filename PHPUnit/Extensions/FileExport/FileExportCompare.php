@@ -7,16 +7,26 @@
 /** Extension of PHPUnit class that provides export file functionality */
 abstract class PHPUnit_FileExport_TestCase extends PHPUnit_Framework_TestCase {
     
-    /** Name of the primary directory for class testing exports */
-    const sEXPORT_DIR       = "phpunit_exports";
+    /**
+     * @const name of the primary directory for class testing exports
+     */
+    const sEXPORT_DIR = "phpunit_exports";
 
-    /** Command-line options for saving exports */
+    /**
+     * @const command-line options for saving ALL exports
+     */
     const sSAVE_ALL_EXPORTS_OPT = "--save-all-exports";
-    const sSAVE_EXPORTS_OPT     = "--save-exports";
 
-    /** Max number of differences in strings to be reported */
+    /**
+     * @const command-line option for saving exports for a filtered test
+     */
+    const sSAVE_EXPORTS_OPT = "--save-exports";
+
+    /**
+     * @const max number of differences in strings to be reported
+     */
     const iMAX_STR_DIFFS = 10;
-   
+
     /** Mandatory class method to run the system
      *
      *  @param object  $result  see PHPUnit documentation
@@ -79,6 +89,8 @@ abstract class PHPUnit_FileExport_TestCase extends PHPUnit_Framework_TestCase {
 
         // Storage flag is set - storing the export
         if (self::_savingExportsFlag() == true) {
+
+            self::_statusMsg("");
 
             // Back up old files if needed
             $this->_backupExportDir($sPath);
@@ -303,7 +315,7 @@ abstract class PHPUnit_FileExport_TestCase extends PHPUnit_Framework_TestCase {
         // Grab the command-line args once to avoid modifications
         if ($aOpts == null)
             $aOpts = $argv;
-      
+
         // Check for the two flags
         if (in_array(self::sSAVE_ALL_EXPORTS_OPT, $aOpts))
             return true;
