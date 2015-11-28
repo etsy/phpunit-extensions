@@ -1,11 +1,13 @@
 <?php
 
+use SebastianBergmann\Exporter\Exporter;
+
 class PHPUnit_Extensions_MockObject_Stub_ReturnMapping
 implements PHPUnit_Framework_MockObject_Stub {
 
     protected $return_map;
     protected $default;
-
+    protected $exporter;
     /**
      * @param array $return_map an array of 
      * PHPUnit_Extensions_Mock_Object_Stub_ReturnMapping_Entry.
@@ -19,6 +21,7 @@ implements PHPUnit_Framework_MockObject_Stub {
     ) {
         $this->return_map = $return_map;
         $this->default = $default;
+	$this->exporter = new Exporter;
     }
 
     /**
@@ -26,6 +29,7 @@ implements PHPUnit_Framework_MockObject_Stub {
      * @return the invocation of the Entry with matching parameters.
      */
     public function invoke(PHPUnit_Framework_MockObject_Invocation $invocation) {
+
         foreach ($this->return_map as $entry) {
             if ($entry->matches($invocation)) {
                 return $entry->invoke($invocation);
@@ -39,7 +43,7 @@ implements PHPUnit_Framework_MockObject_Stub {
         PHPUnit_Framework_Assert::fail(
             sprintf(
                 'No return value defined for %s', 
-                PHPUnit_Util_Type::export($invocation->parameters)));
+                $this->exporter->export($invocation->parameters)));
     }
 
     public function toString() {

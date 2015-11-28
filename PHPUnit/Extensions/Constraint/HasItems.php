@@ -1,5 +1,7 @@
 <?php
 
+use SebastianBergmann\Exporter\Exporter;
+
 /**
  * Determines whether or not the array contains the expected items.
  */
@@ -7,9 +9,11 @@ class PHPUnit_Extensions_Constraint_HasItems
 extends PHPUnit_Framework_Constraint {
 
     private $expected;
+    protected $exporter;
 
     public function __construct($expected) {
         $this->expected = $expected;
+	$this->exporter = new Exporter;
     }
 
     protected function matches($other) {
@@ -28,7 +32,7 @@ extends PHPUnit_Framework_Constraint {
 
     public function toString() {
         return sprintf('has items %s', 
-            PHPUnit_Util_Type::export($this->expected));
+            $this->exporter->export($this->expected));
     }
 }
 
