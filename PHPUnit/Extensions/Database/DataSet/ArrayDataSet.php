@@ -1,7 +1,5 @@
 <?php
 
-require_once 'PHPUnit/Extensions/Database/DataSet/AbstractDataSet.php';
-
 class PHPUnit_Extensions_Database_DataSet_ArrayDataSet
 extends PHPUnit_Extensions_Database_DataSet_AbstractDataSet {
     
