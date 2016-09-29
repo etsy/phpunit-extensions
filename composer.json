@@ -11,9 +11,9 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.6",
-        "phpunit/PHPUnit": ">=3.6.10",
+        "phpunit/phpunit": ">=3.6.10",
         "sebastian/exporter": ">=1.0.1",
-        "mockery/mockery": "0.8.0"
+        "mockery/mockery": "0.9.5"
     },
     "autoload": {
         "classmap": [
