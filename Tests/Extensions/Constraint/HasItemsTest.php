@@ -89,14 +89,12 @@ extends PHPUnit_Framework_TestCase {
      * @expectedException PHPUnit_Framework_AssertionFailedError
      */
     public function testEvaluate_lessThanExpected() {
-        $constraint =
-            new PHPUnit_Extensions_Constraint_HasItems(array(1, 0, 2, 3));
+        $constraint = new PHPUnit_Extensions_Constraint_HasItems(array(1, 0, 2, 3));
         $constraint->evaluate(array(1, 2, 3));
     }
 
     public function testToString() {
-        $constraint =
-            new PHPUnit_Extensions_Constraint_HasItems(array(1, 2, 3));
+        $constraint = new PHPUnit_Extensions_Constraint_HasItems(array(1, 2, 3));
         PHPUnit_Extensions_Assert_More::assertStringMatchIgnoreWhitespace(
             'has items Array ( 0 => 1 1 => 2 2 => 3 )',
             $constraint->toString());

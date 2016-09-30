@@ -125,14 +125,19 @@ extends PHPUnit_Framework_TestCase {
     }
 
     public function testAssertTablesEqual() {
-        $expected = $this->getMock('PHPUnit_Extensions_Database_DataSet_ITable');
+        $expected = new PHPUnit_Extensions_Database_DataSet_DefaultTable(
+            new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData(
+                'my_table',
+                array()
+            )
+        );
         $actual = $expected;
         PHPUnit_Extensions_MultipleDatabase_TestCase
             ::assertTablesEqual($expected, $actual);
     }  
 
     public function testAssertDataSetsEqual() {
-        $expected = $this->getMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
+        $expected = new PHPUnit_Extensions_Database_DataSet_CompositeDataSet();
         $actual = $expected;
         PHPUnit_Extensions_MultipleDatabase_TestCase
             ::assertDataSetsEqual($expected, $actual);

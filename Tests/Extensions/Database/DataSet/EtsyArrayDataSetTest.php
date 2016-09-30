@@ -1,15 +1,15 @@
 <?php
 
-require_once 'PHPUnit/Extensions/Database/DataSet/ArrayDataSet.php';
+require_once 'PHPUnit/Extensions/Database/DataSet/EtsyArrayDataSet.php';
 
-class Tests_Extensions_Database_DataSet_ArrayDataSetTest
+class Tests_Extensions_Database_DataSet_EtsyArrayDataSetTest
 extends PHPUnit_Framework_TestCase {
 
     private $data_set;
 
     protected function setUp() {
         parent::setUp();
-        $this->data_set = new PHPUnit_Extensions_Database_DataSet_ArrayDataSet(
+        $this->data_set = new PHPUnit_Extensions_Database_DataSet_EtsyArrayDataSet(
             array(
                 'table_a' => array(
                     array(
@@ -100,7 +100,7 @@ extends PHPUnit_Framework_TestCase {
     }
 
     public function testEmpty() {
-        $data_set = new PHPUnit_Extensions_Database_DataSet_ArrayDataSet(
+        $data_set = new PHPUnit_Extensions_Database_DataSet_EtsyArrayDataSet(
             array()
         );
         $this->assertNotNull($data_set);
@@ -161,7 +161,7 @@ extends PHPUnit_Framework_TestCase {
                 )
             )
         );
-        $data_set = new PHPUnit_Extensions_Database_DataSet_ArrayDataSet(
+        $data_set = new PHPUnit_Extensions_Database_DataSet_EtsyArrayDataSet(
             array(),
             $tables
         );
@@ -173,7 +173,7 @@ extends PHPUnit_Framework_TestCase {
      * @depends testEmptyTable
      */
     public function testEmptyTable_getTableNames($tables) {
-        $data_set = new PHPUnit_Extensions_Database_DataSet_ArrayDataSet(
+        $data_set = new PHPUnit_Extensions_Database_DataSet_EtsyArrayDataSet(
             array(),
             $tables
         );
@@ -184,7 +184,7 @@ extends PHPUnit_Framework_TestCase {
      * @depends testEmptyTable
      */
     public function testEmptyTable_getTableMetaData($tables) {
-        $data_set = new PHPUnit_Extensions_Database_DataSet_ArrayDataSet(
+        $data_set = new PHPUnit_Extensions_Database_DataSet_EtsyArrayDataSet(
             array(),
             $tables
         );

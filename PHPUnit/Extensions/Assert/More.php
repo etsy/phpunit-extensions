@@ -68,7 +68,6 @@ class PHPUnit_Extensions_Assert_More {
      */
     public static function assertStringMatchIgnoreWhitespace(
         $expected, $actual, $message='') {
-
         PHPUnit_Framework_Assert::assertThat(
             $actual,
             new PHPUnit_Extensions_Constraint_StringMatchIgnoreWhitespace($expected),

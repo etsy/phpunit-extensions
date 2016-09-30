@@ -1,6 +1,6 @@
 <?php
 
-class PHPUnit_Extensions_Database_DataSet_ArrayDataSet
+class PHPUnit_Extensions_Database_DataSet_EtsyArrayDataSet
 extends PHPUnit_Extensions_Database_DataSet_AbstractDataSet {
     
     private $tables;
