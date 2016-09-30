@@ -21,10 +21,20 @@ extends PHPUnit_Framework_Constraint {
     }
 
     private function normalize($string) {
-        return implode(' ', preg_split('/\s+/', trim($string)));
+        /**
+         * the extra replace is because exporter started putting
+         * the identifiers next to the array name
+         * like so:
+         * Array &0 (
+         *  Array &1 (
+         *  ....
+         * which we  previously didn't expect
+         */
+        return preg_replace('#\&. #','', implode(' ', preg_split('/\s+/', trim($string))));
     }
 
     public function toString() {
+
        return sprintf(
            'equals ignoring whitespace %s', 
            $this->exporter->export($this->normalize($this->expected)));
