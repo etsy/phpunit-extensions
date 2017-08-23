@@ -10,14 +10,14 @@
     "homepage": "http://github.com/etsy/phpunit-extensions",
     "license": "BSD-3-Clause",
     "require": {
-        "php": ">=5.3.6",
-        "phpunit/phpunit": ">=3.6.10",
-        "sebastian/exporter": ">=1.0.1",
-        "mockery/mockery": "0.9.5"
+        "php": ">=7.0.0",
+        "phpunit/dbunit": ">=3.0.0",
+        "phpunit/phpunit": ">=6.0.0",
+        "sebastian/exporter": ">=3.0.0"
     },
     "autoload": {
         "classmap": [
-            "PHPUnit/"
+            "src/"
         ]
     }
 }
