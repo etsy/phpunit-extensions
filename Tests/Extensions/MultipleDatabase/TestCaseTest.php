@@ -13,7 +13,7 @@ extends PHPUnit_Framework_TestCase {
     protected function setUp() {
         parent::setUp();    
         $this->dataSet = 
-            $this->getMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
+            $this->createMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
         $this->dataSet
             ->expects($this->any())
             ->method('getIterator')
@@ -26,7 +26,7 @@ extends PHPUnit_Framework_TestCase {
             new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig_Builder();
         $dbConfigs[] = $builder
             ->connection(
-                 $this->getMock(
+                 $this->createMock(
                      'PHPUnit_Extensions_Database_DB_IDatabaseConnection'))
             ->dataSet($this->dataSet)
             ->build();
@@ -35,7 +35,7 @@ extends PHPUnit_Framework_TestCase {
             new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig_Builder();
         $dbConfigs[] = $builder
             ->connection(
-                $this->getMock(
+                $this->createMock(
                     'PHPUnit_Extensions_Database_DB_IDatabaseConnection'))
             ->dataSet($this->dataSet)
             ->build();

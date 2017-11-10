@@ -9,7 +9,7 @@ class Tests_Extensions_MultipleDatabase_DatabaseConfigTest
     extends PHPUnit_Framework_TestCase {
 
     public function testGetConnection() {
-        $connection = $this->getMock(
+        $connection = $this->createMock(
             'PHPUnit_Extensions_Database_DB_IDatabaseConnection');
         $dbConfig = new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig(
              $connection,
@@ -20,7 +20,7 @@ class Tests_Extensions_MultipleDatabase_DatabaseConfigTest
     }
 
     public function testGetDataSet() {
-        $dataSet = $this->getMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
+        $dataSet = $this->createMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
         $dbConfig = new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig(
              NULL,
              $dataSet,
@@ -30,7 +30,7 @@ class Tests_Extensions_MultipleDatabase_DatabaseConfigTest
     }
 
     public function testGetSetUpOperation() {
-        $setUpOperation = $this->getMock(
+        $setUpOperation = $this->createMock(
             'PHPUnit_Extensions_Database_Operation_IDatabaseOperation');
         $dbConfig = new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig(
              NULL,
@@ -41,7 +41,7 @@ class Tests_Extensions_MultipleDatabase_DatabaseConfigTest
     }
 
     public function testGetTearDownOperation() {
-        $tearDownOperation = $this->getMock(
+        $tearDownOperation = $this->createMock(
             'PHPUnit_Extensions_Database_Operation_IDatabaseOperation');
         $dbConfig = new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig(
              NULL,

@@ -14,13 +14,13 @@ extends PHPUnit_Framework_TestCase {
     protected function setUp() {
         parent::setUp();
 
-        $connection = $this->getMock(
+        $connection = $this->createMock(
             'PHPUnit_Extensions_Database_DB_IDatabaseConnection');
-        $dataSet = $this->getMock(
+        $dataSet = $this->createMock(
             'PHPUnit_Extensions_Database_DataSet_IDataSet');
-        $setUpOperation = $this->getMock(
+        $setUpOperation = $this->createMock(
             'PHPUnit_Extensions_Database_Operation_IDatabaseOperation');
-        $tearDownOperation = $this->getMock(
+        $tearDownOperation = $this->createMock(
             'PHPUnit_Extensions_Database_Operation_IDatabaseOperation');
 
         $this->dbConfig = $this->getMockBuilder(

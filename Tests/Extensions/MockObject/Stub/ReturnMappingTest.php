@@ -12,7 +12,7 @@ extends PHPUnit_Framework_TestCase {
      * @expectedException PHPUnit_Framework_AssertionFailedError
      */
     public function testInvoke_noMatch() {
-        $invocation = $this->getMock('Foo');
+        $invocation = $this->createMock('Foo');
 
         $returnMapBuilder =
             new PHPUnit_Extensions_MockObject_Stub_ReturnMapping_Builder();
@@ -29,7 +29,7 @@ extends PHPUnit_Framework_TestCase {
     }
 
     public function testInvoke_matchOutOfOne() {
-        $invocation = $this->getMock('Foo');
+        $invocation = $this->createMock('Foo');
 
         $returnMapBuilder =
             new PHPUnit_Extensions_MockObject_Stub_ReturnMapping_Builder();
@@ -47,7 +47,7 @@ extends PHPUnit_Framework_TestCase {
 
     
     public function testInvoke_matchOutOfMany() {
-        $invocation = $this->getMock('Foo');
+        $invocation = $this->createMock('Foo');
 
         $returnMapBuilder =
             new PHPUnit_Extensions_MockObject_Stub_ReturnMapping_Builder();
@@ -68,7 +68,7 @@ extends PHPUnit_Framework_TestCase {
     }
 
     public function testInvoke_constraintLessThan() {
-        $invocation = $this->getMock('Foo');
+        $invocation = $this->createMock('Foo');
 
         $returnMapBuilder =
             new PHPUnit_Extensions_MockObject_Stub_ReturnMapping_Builder();
@@ -92,7 +92,7 @@ extends PHPUnit_Framework_TestCase {
     }
 
     public function testInvoke_constraintGreaterThan() {
-        $invocation = $this->getMock('Foo');
+        $invocation = $this->createMock('Foo');
 
         $returnMapBuilder =
             new PHPUnit_Extensions_MockObject_Stub_ReturnMapping_Builder();
@@ -116,7 +116,7 @@ extends PHPUnit_Framework_TestCase {
     }
 
     public function testInvoke_constraintEqual() {
-        $invocation = $this->getMock('Foo');
+        $invocation = $this->createMock('Foo');
 
         $returnMapBuilder =
             new PHPUnit_Extensions_MockObject_Stub_ReturnMapping_Builder();

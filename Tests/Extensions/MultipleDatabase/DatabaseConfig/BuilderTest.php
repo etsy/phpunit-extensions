@@ -16,7 +16,7 @@ class Tests_Extensions_MultipleDatabase_DatabaseConfig_BuilderTest
         $this->builder =
             new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig_Builder();
         $this->dataSet = 
-            $this->getMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
+            $this->createMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
         $this->dataSet
             ->expects($this->any())
             ->method('getIterator')
@@ -33,7 +33,7 @@ class Tests_Extensions_MultipleDatabase_DatabaseConfig_BuilderTest
     }
 
     public function testConnection() {
-        $connection = $this->getMock(
+        $connection = $this->createMock(
             'PHPUnit_Extensions_Database_DB_IDatabaseConnection');
 
         $this->builder->connection($connection);
@@ -127,7 +127,7 @@ class Tests_Extensions_MultipleDatabase_DatabaseConfig_BuilderTest
      * @depends testConnection
      */
     public function testSetUpOperation($connection) {
-        $setUpOperation = $this->getMock(
+        $setUpOperation = $this->createMock(
             'PHPUnit_Extensions_Database_Operation_IDatabaseOperation');
         $dbConfig = $this->builder
             ->connection($connection)
@@ -141,7 +141,7 @@ class Tests_Extensions_MultipleDatabase_DatabaseConfig_BuilderTest
      * @depends testConnection
      */
     public function testTearDownOperation($connection) {
-        $tearDownOperation = $this->getMock(
+        $tearDownOperation = $this->createMock(
             'PHPUnit_Extensions_Database_Operation_IDatabaseOperation');
         $dbConfig = $this->builder
             ->connection($connection)
