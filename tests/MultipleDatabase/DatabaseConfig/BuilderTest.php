@@ -23,7 +23,8 @@ class BuilderTest extends TestCase {
         $this->builder =
             new Builder();
         $this->dataSet = 
-            $this->getMockBuilder(IDataSet::class)->getMock();
+
+        $this->createMock(IDataSet::class);
         $this->dataSet
             ->expects($this->any())
             ->method('getIterator')
@@ -40,7 +41,7 @@ class BuilderTest extends TestCase {
     }
 
     public function testConnection() {
-        $connection = $this->getMockBuilder(Connection::class)->getMock();
+        $connection = $this->createMock(Connection::class);
 
         $this->builder->connection($connection);
         
@@ -137,7 +138,7 @@ class BuilderTest extends TestCase {
      * @depends testConnection
      */
     public function testSetUpOperation($connection) {
-        $setUpOperation = $this->getMockBuilder(Operation::class)->getMock();
+        $setUpOperation = $this->createMock(Operation::class);
         $dbConfig = $this->builder
             ->connection($connection)
             ->dataSet($this->dataSet)
@@ -150,7 +151,7 @@ class BuilderTest extends TestCase {
      * @depends testConnection
      */
     public function testTearDownOperation($connection) {
-      $tearDownOperation = $this->getMockBuilder(Operation::class)->getMock();
+        $tearDownOperation = $this->createMock(Operation::class);
         $dbConfig = $this->builder
             ->connection($connection)
             ->dataSet($this->dataSet)

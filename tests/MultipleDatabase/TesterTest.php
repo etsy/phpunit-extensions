@@ -15,10 +15,10 @@ class TesterTest extends \PHPUnit\Framework\TestCase {
     protected function setUp() {
         parent::setUp();
 
-        $connection = $this->getMockBuilder(Connection::class)->getMock();
-        $dataSet = $this->getMockBuilder(IDataSet::class)->getMock();
-        $setUpOperation = $this->getMockBuilder(Operation::class)->getMock();
-        $tearDownOperation = $this->getMockBuilder(Operation::class)->getMock();
+        $connection = $this->createMock(Connection::class);
+        $dataSet = $this->createMock(IDataSet::class);
+        $setUpOperation = $this->createMock(Operation::class);
+        $tearDownOperation = $this->createMock(Operation::class);
 
         $this->dbConfig = $this->getMockBuilder(DatabaseConfig::class)
             ->setConstructorArgs(

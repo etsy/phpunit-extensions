@@ -9,7 +9,7 @@ class ReturnMappingTest extends TestCase {
      * @expectedException \PHPUnit\Framework\AssertionFailedError
      */
     public function testInvoke_noMatch() {
-        $invocation = $this->getMockBuilder(Foo::class)->getMock();
+        $invocation = $this->createMock('Foo');
 
         $returnMapBuilder =
             new Builder();
@@ -26,7 +26,7 @@ class ReturnMappingTest extends TestCase {
     }
 
     public function testInvoke_matchOutOfOne() {
-        $invocation = $this->getMockBuilder(Foo::class)->getMock();
+        $invocation = $this->createMock('Foo');
 
         $returnMapBuilder =
             new Builder();
@@ -44,7 +44,7 @@ class ReturnMappingTest extends TestCase {
 
     
     public function testInvoke_matchOutOfMany() {
-        $invocation = $this->getMockBuilder(Foo::class)->getMock();
+        $invocation = $this->createMock('Foo');
 
         $returnMapBuilder =
             new Builder();
@@ -65,7 +65,7 @@ class ReturnMappingTest extends TestCase {
     }
 
     public function testInvoke_constraintLessThan() {
-        $invocation = $this->getMockBuilder(Foo::class)->getMock();
+        $invocation = $this->createMock('Foo');
 
         $returnMapBuilder =
             new Builder();
@@ -89,7 +89,7 @@ class ReturnMappingTest extends TestCase {
     }
 
     public function testInvoke_constraintGreaterThan() {
-        $invocation = $this->getMockBuilder(Foo::class)->getMock();
+        $invocation = $this->createMock('Foo');
 
         $returnMapBuilder =
             new Builder();
@@ -113,7 +113,7 @@ class ReturnMappingTest extends TestCase {
     }
 
     public function testInvoke_constraintEqual() {
-        $invocation = $this->getMockBuilder(Foo::class)->getMock();
+        $invocation = $this->createMock('Foo');
 
         $returnMapBuilder =
             new Builder();

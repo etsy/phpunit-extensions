@@ -20,7 +20,7 @@ class TestCaseTest extends \PHPUnit\Framework\TestCase {
     protected function setUp() {
         parent::setUp();    
         $this->dataSet = 
-            $this->getMockBuilder(IDataSet::class)->getMock();
+        $this->createMock(IDataSet::class);
         $this->dataSet
             ->expects($this->any())
             ->method('getIterator')
@@ -33,7 +33,8 @@ class TestCaseTest extends \PHPUnit\Framework\TestCase {
             new Builder();
         $dbConfigs[] = $builder
             ->connection(
-                 $this->getMockBuilder(Connection::class)->getMock())
+                 $this->createMock(
+                     Connection::class))
             ->dataSet($this->dataSet)
             ->build();
 
@@ -41,7 +42,8 @@ class TestCaseTest extends \PHPUnit\Framework\TestCase {
             new Builder();
         $dbConfigs[] = $builder
             ->connection(
-                $this->getMockBuilder(Connection::class)->getMock())
+                $this->createMock(
+                    Connection::class))
             ->dataSet($this->dataSet)
             ->build();
         
