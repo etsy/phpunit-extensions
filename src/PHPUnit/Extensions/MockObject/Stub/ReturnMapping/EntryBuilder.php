@@ -2,7 +2,7 @@
 namespace PHPUnit\Extensions\MockObject\Stub\ReturnMapping;
 
 use PHPUnit\Framework\Assert;
-use PHPUnit_Framework_MockObject_Matcher_Parameters;
+use PHPUnit\Framework\MockObject\Matcher\Parameters;
 
 class EntryBuilder {
 
@@ -41,7 +41,7 @@ class EntryBuilder {
             $this->parameters,
             "ReturnMapping cannot be used with null parameter list.");
         $parameter_matcher = 
-            new PHPUnit_Framework_MockObject_Matcher_Parameters(
+            new Parameters(
                 $this->parameters);
         return new Entry(
             $parameter_matcher, $this->return);

@@ -4,11 +4,11 @@ namespace PHPUnit\Extensions\MockObject\Stub;
 use SebastianBergmann\Exporter\Exporter;
 
 use PHPUnit\Framework\Assert;
-use PHPUnit_Framework_MockObject_Invocation;
-use PHPUnit_Framework_MockObject_Stub;
+use PHPUnit\Framework\MockObject\Invocation;
+use PHPUnit\Framework\MockObject\Stub;
 
 class ReturnMapping
-implements PHPUnit_Framework_MockObject_Stub {
+implements Stub {
 
     protected $return_map;
     protected $default;
@@ -30,10 +30,10 @@ implements PHPUnit_Framework_MockObject_Stub {
     }
 
     /**
-     * @param PHPUnit_Framework_MockObject_Invocation $invocation
+     * @param Invocation $invocation
      * @return the invocation of the Entry with matching parameters.
      */
-    public function invoke(PHPUnit_Framework_MockObject_Invocation $invocation) {
+    public function invoke(Invocation $invocation) {
 
         foreach ($this->return_map as $entry) {
             if ($entry->matches($invocation)) {
@@ -48,7 +48,7 @@ implements PHPUnit_Framework_MockObject_Stub {
         Assert::fail(
             sprintf(
                 'No return value defined for %s', 
-                $this->exporter->export($invocation->parameters)));
+                $this->exporter->export($invocation->getParameters())));
     }
 
     public function toString() {
