@@ -1,13 +1,14 @@
 <?php
 
+namespace PHPUnit\Framework\Constraint;
 use SebastianBergmann\Exporter\Exporter;
 
 /**
  * Determines whether or not the array contains the same exact contents,
  * but not necessarily the same order.
  */
-class PHPUnit_Extensions_Constraint_ArrayEqualsNoOrder
-extends PHPUnit_Framework_Constraint_And {
+class ArrayEqualsNoOrder
+extends LogicalAnd {
 
     private $andConstraint;
     protected $exporter; 
