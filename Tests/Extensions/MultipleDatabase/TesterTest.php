@@ -1,30 +1,29 @@
 <?php
 
-require_once 'PHPUnit/Extensions/MultipleDatabase/DatabaseConfig.php';
-require_once 'PHPUnit/Extensions/MultipleDatabase/Tester.php';
+namespace PHPUnit\Extensions\MultipleDatabase;
+
+use PHPUnit\Framework\TestCase;
+
+use PHPUnit\DbUnit\Database\Connection;
+use PHPUnit\DbUnit\DataSet\IDataSet;
+use PHPUnit\DbUnit\Operation\Operation;
 
 /**
  * @covers PHPUnit_Extensions_MultipleDatabase_Tester
  */
-class Tests_Extensions_MultipleDatabase_TesterTest 
-extends PHPUnit_Framework_TestCase {
+class Tests_Extensions_MultipleDatabase_TesterTest extends TestCase {
 
     private $dbConfig;
 
     protected function setUp() {
         parent::setUp();
 
-        $connection = $this->createMock(
-            'PHPUnit_Extensions_Database_DB_IDatabaseConnection');
-        $dataSet = $this->createMock(
-            'PHPUnit_Extensions_Database_DataSet_IDataSet');
-        $setUpOperation = $this->createMock(
-            'PHPUnit_Extensions_Database_Operation_IDatabaseOperation');
-        $tearDownOperation = $this->createMock(
-            'PHPUnit_Extensions_Database_Operation_IDatabaseOperation');
+        $connection = $this->createMock(Connection::class);
+        $dataSet = $this->createMock(IDataSet::class);
+        $setUpOperation = $this->createMock(Operation::class);
+        $tearDownOperation = $this->createMock(Operation::class);
 
-        $this->dbConfig = $this->getMockBuilder(
-            'PHPUnit_Extensions_MultipleDatabase_DatabaseConfig')
+        $this->dbConfig = $this->getMockBuilder(DatabaseConfig::class)
             ->setConstructorArgs(
                 array(
                     $connection, 
@@ -32,7 +31,7 @@ extends PHPUnit_Framework_TestCase {
                     $setUpOperation, 
                     $tearDownOperation
                 ))
-            ->getMock();
+	    ->getMock();
         $this->dbConfig
             ->expects($this->any())
             ->method('getConnection')
@@ -52,8 +51,7 @@ extends PHPUnit_Framework_TestCase {
     }
 
     public function testConstruct_setsConnectionCorrectly() {
-        $tester = 
-            new PHPUnit_Extensions_MultipleDatabase_Tester($this->dbConfig);
+        $tester = new Tester($this->dbConfig);
         $this->assertEquals(
             $this->dbConfig->getConnection(),
             $tester->getConnection());

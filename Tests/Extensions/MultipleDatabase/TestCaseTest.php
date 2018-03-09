@@ -1,74 +1,73 @@
 <?php
 
-require_once 'PHPUnit/Extensions/MultipleDatabase/TestCase.php';
+namespace PHPUnit\Extensions\MultipleDatabase;
+
+use ArrayIterator;
+
+use PHPUnit\DbUnit\DataSet\IDataSet;
+use PHPUnit\DbUnit\Database\Connection;
+use PHPUnit\DbUnit\DataSet\DefaultTable;
+use PHPUnit\DbUnit\DataSet\DefaultTableMetaData;
+use PHPUnit\DbUnit\DataSet\CompositeDataSet;
+use PHPUnit\Extensions\MultipleDatabase\DatabaseConfig\Builder;
 
 /**
- * @covers PHPUnit_Extensions_MultipleDatabase_TestCase
+ * @covers TestCase
  */
-class Tests_Extensions_MultipleDatabase_TestCaseTest 
-extends PHPUnit_Framework_TestCase {
-
+class TestCaseTest extends \PHPUnit\Framework\TestCase {
     private $dataSet;
-
     protected function setUp() {
         parent::setUp();    
         $this->dataSet = 
-            $this->createMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
+        $this->createMock(IDataSet::class);
         $this->dataSet
             ->expects($this->any())
             ->method('getIterator')
             ->will($this->returnValue(new ArrayIterator(array(1,2))));
     }
-
     public function testGetDatabaseTesters() {
         $dbConfigs = array();
         $builder =
-            new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig_Builder();
+            new Builder();
         $dbConfigs[] = $builder
             ->connection(
                  $this->createMock(
-                     'PHPUnit_Extensions_Database_DB_IDatabaseConnection'))
+                     Connection::class))
             ->dataSet($this->dataSet)
             ->build();
-
         $builder =
-            new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig_Builder();
+            new Builder();
         $dbConfigs[] = $builder
             ->connection(
                 $this->createMock(
-                    'PHPUnit_Extensions_Database_DB_IDatabaseConnection'))
+                    Connection::class))
             ->dataSet($this->dataSet)
             ->build();
         
         $expected = array(
-            new PHPUnit_Extensions_MultipleDatabase_Tester($dbConfigs[0]),
-            new PHPUnit_Extensions_MultipleDatabase_Tester($dbConfigs[1]));
+            new Tester($dbConfigs[0]),
+            new Tester($dbConfigs[1]));
 	
         $testCase = $this->getMockForAbstractClass(
-            'PHPUnit_Extensions_MultipleDatabase_TestCase');
+            TestCase::class);
         $testCase
             ->expects($this->any())
             ->method('getDatabaseConfigs')
             ->will($this->returnValue($dbConfigs));
-
         $this->assertEquals($expected, $testCase->getDatabaseTesters());
-
         return $testCase;
     }
-
     public function testSetUpDatabaseTesters() {
         $testers = array();
-
         $testers[] = $this->getMockBuilder(
-            'PHPUnit_Extensions_MultipleDatabase_Tester')
+            Tester::class)
             ->disableOriginalConstructor()
             ->getMock();
         $testers[0]
             ->expects($this->once())
             ->method('onSetUp');
-
         $testers[] = $this->getMockBuilder(
-            'PHPUnit_Extensions_MultipleDatabase_Tester')
+            Tester::class)
             ->disableOriginalConstructor()
             ->getMock();
         $testers[1]
@@ -76,24 +75,21 @@ extends PHPUnit_Framework_TestCase {
             ->method('onSetUp');
  
         $testCase = $this->getMockForAbstractClass(
-            'PHPUnit_Extensions_MultipleDatabase_TestCase');
+            TestCase::class);
         
         $testCase->setUpDatabaseTesters($testers);
     }
-
     public function testTearDownDatabaseTesters() {
         $testers = array();
-
         $testers[] = $this->getMockBuilder(
-            'PHPUnit_Extensions_MultipleDatabase_Tester')
+            Tester::class)
             ->disableOriginalConstructor()
             ->getMock();
         $testers[0]
             ->expects($this->once())
             ->method('onTearDown');
-
         $testers[] = $this->getMockBuilder(
-            'PHPUnit_Extensions_MultipleDatabase_Tester')
+            Tester::class)
             ->disableOriginalConstructor()
             ->getMock();
         $testers[1]
@@ -101,11 +97,10 @@ extends PHPUnit_Framework_TestCase {
             ->method('onTearDown');
  
         $testCase = $this->getMockForAbstractClass(
-            'PHPUnit_Extensions_MultipleDatabase_TestCase');
+            TestCase::class);
         
         $testCase->tearDownDatabaseTesters($testers);
     }
-
     /**
      * @depends testGetDatabaseTesters
      */
@@ -114,7 +109,6 @@ extends PHPUnit_Framework_TestCase {
         $testCase->setUp();
         $this->assertObjectHasAttribute('testers', $testCase);
     }
-
     /**
      * @depends testGetDatabaseTesters
      */
@@ -123,23 +117,19 @@ extends PHPUnit_Framework_TestCase {
         $testCase->tearDown();
         $this->assertObjectHasAttribute('testers', $testCase);
     }
-
     public function testAssertTablesEqual() {
-        $expected = new PHPUnit_Extensions_Database_DataSet_DefaultTable(
-            new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData(
+        $expected = new DefaultTable(
+            new DefaultTableMetaData(
                 'my_table',
                 array()
             )
         );
         $actual = $expected;
-        PHPUnit_Extensions_MultipleDatabase_TestCase
-            ::assertTablesEqual($expected, $actual);
+        TestCase::assertTablesEqual($expected, $actual);
     }  
-
     public function testAssertDataSetsEqual() {
-        $expected = new PHPUnit_Extensions_Database_DataSet_CompositeDataSet();
+        $expected = new CompositeDataSet();
         $actual = $expected;
-        PHPUnit_Extensions_MultipleDatabase_TestCase
-            ::assertDataSetsEqual($expected, $actual);
+        TestCase::assertDataSetsEqual($expected, $actual);
     }  
 }

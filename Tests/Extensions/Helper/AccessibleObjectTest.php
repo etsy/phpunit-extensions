@@ -1,16 +1,19 @@
 <?php
 
-require_once 'PHPUnit/Extensions/Helper/AccessibleObject.php';
+namespace PHPUnit\Extensions\Helper;
 
-class Tests_Extensions_Helper_AccessibleObjectTest
-extends PHPUnit_Framework_TestCase {
+use PHPUnit\Framework\TestCase;
+
+use ReflectionException;
+
+class AccessibleObjectTest extends TestCase {
 
     private $accessible_object;
     
     protected function setUp() {
         parent::setUp();
-        $this->accessibleObject = new PHPUnit_Extensions_Helper_AccessibleObject(
-            new Tests_Extensions_Helper_AccessibleObject_Object()
+        $this->accessibleObject = new AccessibleObject(
+            new AccessibleObject_Object()
         );
     }
     
@@ -77,7 +80,7 @@ extends PHPUnit_Framework_TestCase {
     }
 }
 
-class Tests_Extensions_Helper_AccessibleObject_Object {
+class AccessibleObject_Object {
 
     public $public_var;
     

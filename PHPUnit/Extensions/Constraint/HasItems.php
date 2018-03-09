@@ -1,12 +1,14 @@
 <?php
 
+namespace PHPUnit\Extensions\Constraint;
+
+use PHPUnit\Framework\Constraint\Constraint;
 use SebastianBergmann\Exporter\Exporter;
 
 /**
  * Determines whether or not the array contains the expected items.
  */
-class PHPUnit_Extensions_Constraint_HasItems 
-extends PHPUnit_Framework_Constraint {
+class HasItems extends Constraint {
 
     private $expected;
     protected $exporter;

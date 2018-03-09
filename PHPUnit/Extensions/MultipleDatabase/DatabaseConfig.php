@@ -1,9 +1,11 @@
 <?php
 
+namespace PHPUnit\Extensions\MultipleDatabase;
+
 /**
  * Configuration for a data base configuration.
  */
-class PHPUnit_Extensions_MultipleDatabase_DatabaseConfig {
+class DatabaseConfig {
 
     private $connection;
     private $dataSet;

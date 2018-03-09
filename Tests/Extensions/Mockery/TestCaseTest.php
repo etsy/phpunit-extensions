@@ -1,6 +1,10 @@
 <?php
 
-require_once 'PHPUnit/Extensions/Mockery/TestCase.php';
+namespace PHPUnit\Extensions\Mockery;
+
+use PHPUnit\Extensions\Mockery\TestCase;
+use Mockery;
+
 
 interface Tests_Extensions_Mockery_TestCase_Foo {
 
@@ -25,8 +29,7 @@ class Tests_Extensions_Mockery_TestCase_Baz {
     }
 }
 
-class Tests_Extensions_Mockery_TestCaseTest
-extends PHPUnit_Extensions_Mockery_TestCase {
+class Tests_Extensions_Mockery_TestCaseTest extends TestCase {
 
     /** @mockery Tests_Extensions_Mockery_TestCase_Foo */
     protected $foo;
@@ -43,7 +46,7 @@ extends PHPUnit_Extensions_Mockery_TestCase {
         $this->baz = $this->getMockery(
             new Tests_Extensions_Mockery_TestCase_Baz($this->foo)
         );
-        $this->old = $this->getMockBuilder('Tests_Extensions_Mockery_TestCase_Baz')
+        $this->old = $this->getMockBuilder(Tests_Extensions_Mockery_TestCase_Baz::class)
             ->disableOriginalConstructor()
             ->getMock();
     }
@@ -89,6 +92,6 @@ extends PHPUnit_Extensions_Mockery_TestCase {
             ->expects($this->atLeastOnce())
             ->method('baz')
             ->will($this->returnSelf());
-        $this->assertEquals($this->old, $this->old->baz());
+	$this->assertEquals($this->old, $this->old->baz());
     }
 }

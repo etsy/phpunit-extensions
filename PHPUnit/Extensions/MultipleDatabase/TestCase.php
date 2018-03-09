@@ -1,11 +1,16 @@
 <?php
 
+namespace PHPUnit\Extensions\MultipleDatabase;
+
+use PHPUnit\DbUnit\DataSet\IDataSet;
+use PHPUnit\DbUnit\DataSet\ITable;
+
 /**
  * TestCase the utilizes multiple database testers to connect and
  * populate multiple databases for tests dependent upon databases.
  */
-abstract class PHPUnit_Extensions_MultipleDatabase_TestCase 
-extends PHPUnit_Extensions_Mockery_TestCase {
+abstract class TestCase 
+extends \PHPUnit\Extensions\Mockery\TestCase {
 
     private $testers;
 
@@ -35,7 +40,7 @@ extends PHPUnit_Extensions_Mockery_TestCase {
      * @param string $message
      */
     public static function assertTablesEqual($expected, $actual) {
-        PHPUnit_Extensions_Database_TestCase::assertTablesEqual($expected, $actual);
+        \PHPUnit\DbUnit\TestCase::assertTablesEqual($expected, $actual);
     }
 
 /**
@@ -46,7 +51,7 @@ extends PHPUnit_Extensions_Mockery_TestCase {
      * @param string $message
      */
     public static function assertDataSetsEqual($expected, $actual) {
-        PHPUnit_Extensions_Database_TestCase::assertDataSetsEqual($expected, $actual);
+        \PHPUnit\DbUnit\TestCase::assertDataSetsEqual($expected, $actual);
     }
 
     function setUpDatabaseTesters($testers) {
@@ -65,9 +70,7 @@ extends PHPUnit_Extensions_Mockery_TestCase {
         if (!isset($this->testers)) {
             $this->testers = array();
             foreach ($this->getDatabaseConfigs() as $dbConfig) {
-                $this->testers[] =
-                    new PHPUnit_Extensions_MultipleDatabase_Tester(
-                        $dbConfig);
+                $this->testers[] = new Tester($dbConfig);
             }
         }
         return $this->testers;

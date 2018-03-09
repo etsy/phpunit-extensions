@@ -1,83 +1,81 @@
 <?php
 
-require_once 'PHPUnit/Extensions/Assert/More.php';
-require_once 'PHPUnit/Extensions/Constraint/ArrayEqualsNoOrder.php';
-require_once 'PHPUnit/Extensions/Constraint/ArrayHasKeyValuePair.php';
-require_once 'PHPUnit/Extensions/Constraint/HasItems.php';
-require_once 'PHPUnit/Extensions/Constraint/StringMatchIgnoreWhitespace.php';
+namespace PHPUnit\Extensions\Assert;
+
+use PHPUnit\Framework\TestCase;
 
 /**
- * @covers PHPUnit_Extensions_Assert_More
+ * @covers More
  */
-class Tests_Extensions_Assert_MoreTest extends PHPUnit_Framework_TestCase {
+class MoreTest extends TestCase {
 
     public function testAssertHasItems_passes() {
-        PHPUnit_Extensions_Assert_More::assertHasItems(
+        More::assertHasItems(
             array(1, 2, 3),
             array(3, 1, 0, 2));
     }
 
     /**
-     * @expectedException PHPUnit_Framework_AssertionFailedError
+     * @expectedException \PHPUnit\Framework\AssertionFailedError
      */
     public function testAssertArrayHasKeyValuePair_fails() {
-        PHPUnit_Extensions_Assert_More::assertArrayHasKeyValuePair(
+        More::assertArrayHasKeyValuePair(
             'key',
             'value',
             array(1, 2, 3));
     }
 
     public function testAssertArrayHasKeyValuePair_passes() {
-        PHPUnit_Extensions_Assert_More::assertArrayHasKeyValuePair(
+        More::assertArrayHasKeyValuePair(
             'key',
             'value',
             array('a', 3, 'key' => 'value'));
     }
 
     /**
-     * @expectedException PHPUnit_Framework_AssertionFailedError
+     * @expectedException \PHPUnit\Framework\AssertionFailedError
      */
     public function testAssertHasItems_fails() {
-        PHPUnit_Extensions_Assert_More::assertHasItems(
+        More::assertHasItems(
             array(4),
             array(1, 2, 3));
     }
 
     public function testAssertArrayEqualsNoOrder_passes() {
-        PHPUnit_Extensions_Assert_More::assertArrayEqualsNoOrder(
+        More::assertArrayEqualsNoOrder(
             array(1, 2, 3), 
             array(3, 1, 2));
     }
 
     /**
-     * @expectedException PHPUnit_Framework_AssertionFailedError
+     * @expectedException \PHPUnit\Framework\AssertionFailedError
      */
     public function testAssertArrayEqualsNoOrder_sameSize() {
-        PHPUnit_Extensions_Assert_More::assertArrayEqualsNoOrder(
+        More::assertArrayEqualsNoOrder(
             array(1, 2, 3),
             array(4, 5, 6));
     }
 
     /**
-     * @expectedException PHPUnit_Framework_AssertionFailedError
+     * @expectedException \PHPUnit\Framework\AssertionFailedError
      */
     public function testAssertArrayEqualsNoOrder_duplicates() {
-        PHPUnit_Extensions_Assert_More::assertArrayEqualsNoOrder(
+        More::assertArrayEqualsNoOrder(
             array(1, 2, 3),
             array(1, 1, 2, 3));
     }
 
     public function testAssertStringMatchIgnoreWhitespace_passes() {
-        PHPUnit_Extensions_Assert_More::assertStringMatchIgnoreWhitespace(
+        More::assertStringMatchIgnoreWhitespace(
             "spaces do not matter",
             "spaces\ndo\tnot matter ");
     }
 
     /**
-     * @expectedException PHPUnit_Framework_AssertionFailedError
+     * @expectedException \PHPUnit\Framework\AssertionFailedError
      */
     public function testAssertStringMatchIgnoreWhitespace_fails() {
-        PHPUnit_Extensions_Assert_More::assertStringMatchIgnoreWhitespace(
+        More::assertStringMatchIgnoreWhitespace(
             "spaces do not matter",
             "but the not whitespace characters do!");
     }

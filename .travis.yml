@@ -1,0 +1,23 @@
+language: php
+
+php:
+  - 7.1
+  - nightly
+
+env:
+  global:
+    - DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
+
+sudo: false
+
+before_install:
+  - composer clear-cache
+
+install:
+  - travis_retry composer update $DEFAULT_COMPOSER_FLAGS
+
+script:
+  - ./vendor/bin/phpunit
+
+notifications:
+  email: false
