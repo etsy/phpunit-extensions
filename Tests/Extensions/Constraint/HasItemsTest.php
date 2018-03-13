@@ -1,103 +1,96 @@
 <?php
 
-require_once 'PHPUnit/Extensions/Assert/More.php';
-require_once 'PHPUnit/Extensions/Constraint/HasItems.php';
-require_once 'PHPUnit/Extensions/Constraint/StringMatchIgnoreWhitespace.php';
+namespace PHPUnit\Extensions\Constraint;
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Extensions\Assert\More;
 
 /**
- * @covers PHPUnit_Extensions_Constraint_HasItems
+ * @covers HasItems
  */
-class Tests_Extensions_Constraint_HasItemsTest 
-extends PHPUnit_Framework_TestCase {
-
+class HasItemsTest extends TestCase {
     /**
-     * @expectedException PHPUnit_Framework_AssertionFailedError
+     * @expectedException \PHPUnit\Framework\AssertionFailedError
      */
     public function testEvaluate_null() {
-        $constraint = new PHPUnit_Extensions_Constraint_HasItems(null);
+        $constraint = new HasItems(null);
         $constraint->evaluate(null);
     }
-
     /**
-     * @expectedException PHPUnit_Framework_AssertionFailedError
+     * @expectedException \PHPUnit\Framework\AssertionFailedError
      */
     public function testEvaluate_nullExpected() {
-        $constraint = new PHPUnit_Extensions_Constraint_HasItems(null);
+        $constraint = new HasItems(null);
         $constraint->evaluate(array(1, 2, 3));
     }
-
     /**
-     * @expectedException PHPUnit_Framework_AssertionFailedError
+     * @expectedException \PHPUnit\Framework\AssertionFailedError
      */
     public function testEvaluate_nullActual() {
         $constraint =
-            new PHPUnit_Extensions_Constraint_HasItems(array(1, 2, 3));
+            new HasItems(array(1, 2, 3));
         $constraint->evaluate(null);
     }
-
     public function testEvaluate_empty() {
-        $constraint = new PHPUnit_Extensions_Constraint_HasItems(array());
-        $constraint->evaluate(array());
+        $constraint = new HasItems(array());
+        $result = $constraint->evaluate(array(), '', true);
+        $this->assertTrue($result);
     }
-
     public function testEvaluate_emptyExpected() {
         $constraint =
-            new PHPUnit_Extensions_Constraint_HasItems(array());
-        $constraint->evaluate(array(1, 2, 3));
+            new HasItems(array());
+        $result = $constraint->evaluate(array(1, 2, 3), '', true);
+        $this->assertTrue($result);
     }
-
     /**
-     * @expectedException PHPUnit_Framework_AssertionFailedError
+     * @expectedException \PHPUnit\Framework\AssertionFailedError
      */
     public function testEvaluate_emptyActual() {
         $constraint =
-            new PHPUnit_Extensions_Constraint_HasItems(array(1, 2, 3));
+            new HasItems(array(1, 2, 3));
         $constraint->evaluate(array());
     }
-
     public function testEvaluate_equal() {
         $constraint =
-            new PHPUnit_Extensions_Constraint_HasItems(array(1, 2, 3));
-        $constraint->evaluate(array(1, 2, 3));
+            new HasItems(array(1, 2, 3));
+        $result = $constraint->evaluate(array(1, 2, 3), '', true);
+        $this->assertTrue($result);
     }
-
     public function testEvaluate_sameDifferentOrder() {
         $constraint =
-            new PHPUnit_Extensions_Constraint_HasItems(array(1, 2, 3));
-        $constraint->evaluate(array(3, 1, 2));
+            new HasItems(array(1, 2, 3));
+        $result = $constraint->evaluate(array(3, 1, 2), '', true);
+        $this->assertTrue($result);
     }
-
     public function testEvaluate_duplicateExpected() {
         $constraint =
-            new PHPUnit_Extensions_Constraint_HasItems(array(1, 1, 2, 2, 3, 3));
-        $constraint->evaluate(array(1, 2, 3));
+            new HasItems(array(1, 1, 2, 2, 3, 3));
+        $result = $constraint->evaluate(array(1, 2, 3), '', true);
+        $this->assertTrue($result);
     }
-
     public function testEvaluate_duplicateActual() {
         $constraint =
-            new PHPUnit_Extensions_Constraint_HasItems(array(1, 2, 3));
-        $constraint->evaluate(array(1, 1, 2, 2, 3, 3));
+            new HasItems(array(1, 2, 3));
+        $result = $constraint->evaluate(array(1, 1, 2, 2, 3, 3), '', true);
+        $this->assertTrue($result);
     }
-
     public function testEvaluate_moreThanExpected() {
         $constraint =
-            new PHPUnit_Extensions_Constraint_HasItems(array(1, 2, 3));
-        $constraint->evaluate(array(1, 0, 2, 3));
+            new HasItems(array(1, 2, 3));
+        $result = $constraint->evaluate(array(1, 0, 2, 3), '', true);
+        $this->assertTrue($result);
     }
-
     /**
-     * @expectedException PHPUnit_Framework_AssertionFailedError
+     * @expectedException \PHPUnit\Framework\AssertionFailedError
      */
     public function testEvaluate_lessThanExpected() {
-        $constraint = new PHPUnit_Extensions_Constraint_HasItems(array(1, 0, 2, 3));
+        $constraint = new HasItems(array(1, 0, 2, 3));
         $constraint->evaluate(array(1, 2, 3));
     }
-
     public function testToString() {
-        $constraint = new PHPUnit_Extensions_Constraint_HasItems(array(1, 2, 3));
-        PHPUnit_Extensions_Assert_More::assertStringMatchIgnoreWhitespace(
+        $constraint = new HasItems(array(1, 2, 3));
+        More::assertStringMatchIgnoreWhitespace(
             'has items Array ( 0 => 1 1 => 2 2 => 3 )',
             $constraint->toString());
     }
-}
-
+}          

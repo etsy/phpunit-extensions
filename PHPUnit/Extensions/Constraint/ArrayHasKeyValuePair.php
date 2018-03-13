@@ -1,12 +1,16 @@
 <?php
 
+namespace PHPUnit\Extensions\Constraint;
+
+use ArrayAccess;
+use PHPUnit\Framework\Constraint\Constraint;
 use SebastianBergmann\Exporter\Exporter;
 
 /**
  * Constraint that asserts that the array it is evaluated for has a given key
  * and value combination.
  */
-class PHPUnit_Extensions_Constraint_ArrayHasKeyValuePair extends PHPUnit_Framework_Constraint
+class ArrayHasKeyValuePair extends Constraint
 {
     /**
      * @var integer|string
@@ -16,7 +20,6 @@ class PHPUnit_Extensions_Constraint_ArrayHasKeyValuePair extends PHPUnit_Framewo
      * @var mixed
      */
     protected $value;
-
     protected $exporter;
     /**
      * @param integer|string $key
@@ -28,12 +31,12 @@ class PHPUnit_Extensions_Constraint_ArrayHasKeyValuePair extends PHPUnit_Framewo
         $this->value = $value;
 	$this->exporter = new Exporter;
     }
-
     /**
      * Evaluates the constraint for parameter $other. Returns TRUE if the
      * constraint is met, FALSE otherwise.
      *
      * @param array|ArrayAccess $other Value or object to evaluate.
+     * 
      * @return bool
      */
     protected function matches($other)
@@ -43,7 +46,6 @@ class PHPUnit_Extensions_Constraint_ArrayHasKeyValuePair extends PHPUnit_Framewo
         }
         return (array_key_exists($this->key, $other) && ($other[$this->key] === $this->value));
     }
-
     /**
      * Returns a string representation of the constraint.
      *
@@ -54,7 +56,6 @@ class PHPUnit_Extensions_Constraint_ArrayHasKeyValuePair extends PHPUnit_Framewo
         return 'has the key ' . $this->exporter->export($this->key) .
                 ' with the value ' . $this->exporter->export($this->value);
     }
-
     /**
      * Returns the description of the failure
      *
@@ -62,6 +63,7 @@ class PHPUnit_Extensions_Constraint_ArrayHasKeyValuePair extends PHPUnit_Framewo
      * cases. This method should return the second part of that sentence.
      *
      * @param  mixed $other Evaluated value or object.
+     * 
      * @return string
      */
     protected function failureDescription($other)

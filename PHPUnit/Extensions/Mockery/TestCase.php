@@ -1,6 +1,11 @@
 <?php
 
-abstract class PHPUnit_Extensions_Mockery_TestCase extends PHPUnit_Framework_TestCase {
+namespace PHPUnit\Extensions\Mockery;
+
+use Mockery;
+use ReflectionClass;
+
+abstract class TestCase extends \PHPUnit\Framework\TestCase {
 
     const REGEX_MOCK = '/@mockery\s+([a-zA-Z0-9._:-\\\\x7f-\xff]+)/';
     

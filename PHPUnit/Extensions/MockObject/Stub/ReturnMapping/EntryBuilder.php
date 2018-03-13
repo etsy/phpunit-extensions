@@ -1,6 +1,11 @@
 <?php
 
-class PHPUnit_Extensions_MockObject_Stub_ReturnMapping_EntryBuilder {
+namespace PHPUnit\Extensions\MockObject\Stub\ReturnMapping;
+
+use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\MockObject\Matcher\Parameters;
+
+class EntryBuilder {
 
     private $parameters;
     private $return;
@@ -10,7 +15,7 @@ class PHPUnit_Extensions_MockObject_Stub_ReturnMapping_EntryBuilder {
     /**
      * @param array $parameters takes in an array of raw parameter values
      * and PHPUnit_Framework_Constraint
-     * @return this
+     * @return EntryBuilder
      */
     public function with(array $parameters) {
         $this->parameters = $parameters;
@@ -20,7 +25,7 @@ class PHPUnit_Extensions_MockObject_Stub_ReturnMapping_EntryBuilder {
     /**
      * @param $return takes in either a raw return value or a
      * PHPUnit_Extensions_MockObject_Stub
-     * @return this
+     * @return EntryBuilder
      */
     public function will($return) {
         $this->return = $return;
@@ -28,17 +33,15 @@ class PHPUnit_Extensions_MockObject_Stub_ReturnMapping_EntryBuilder {
     }
 
     /**
-     * @return PHPUnit_Extensions_MockObject_Stub_ReturnMapping_Entry
+     * @return Entry
      */
     public function build() {
-        PHPUnit_Framework_Assert::assertNotNull(
+        Assert::assertNotNull(
             $this->parameters,
             "ReturnMapping cannot be used with null parameter list.");
         $parameter_matcher = 
-            new PHPUnit_Framework_MockObject_Matcher_Parameters(
-                $this->parameters);
-        return new PHPUnit_Extensions_MockObject_Stub_ReturnMapping_Entry(
-            $parameter_matcher, $this->return);
+            new Parameters($this->parameters);
+        return new Entry($parameter_matcher, $this->return);
     }
 }
 

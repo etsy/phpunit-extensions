@@ -1,17 +1,20 @@
 <?php
 
-require_once 'PHPUnit/Extensions/MultipleDatabase/DatabaseConfig.php';
+namespace PHPUnit\Extensions\MultipleDatabase;
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\DbUnit\Database\Connection;
+use PHPUnit\DbUnit\DataSet\IDataSet;
+use PHPUnit\DbUnit\Operation\Operation;
 
 /**
- * @covers PHPUnit_Extensions_MultipleDatabase_DatabaseConfig
+ * @covers DatabaseConfig
  */
-class Tests_Extensions_MultipleDatabase_DatabaseConfigTest
-    extends PHPUnit_Framework_TestCase {
+class Tests_Extensions_MultipleDatabase_DatabaseConfigTest extends TestCase {
 
     public function testGetConnection() {
-        $connection = $this->createMock(
-            'PHPUnit_Extensions_Database_DB_IDatabaseConnection');
-        $dbConfig = new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig(
+        $connection = $this->createMock(Connection::class);
+        $dbConfig = new DatabaseConfig(
              $connection,
              NULL,
              NULL,
@@ -20,8 +23,8 @@ class Tests_Extensions_MultipleDatabase_DatabaseConfigTest
     }
 
     public function testGetDataSet() {
-        $dataSet = $this->createMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
-        $dbConfig = new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig(
+        $dataSet = $this->createMock(IDataSet::class);
+        $dbConfig = new DatabaseConfig(
              NULL,
              $dataSet,
              NULL,
@@ -30,9 +33,8 @@ class Tests_Extensions_MultipleDatabase_DatabaseConfigTest
     }
 
     public function testGetSetUpOperation() {
-        $setUpOperation = $this->createMock(
-            'PHPUnit_Extensions_Database_Operation_IDatabaseOperation');
-        $dbConfig = new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig(
+        $setUpOperation = $this->createMock(Operation::class);
+        $dbConfig = new DatabaseConfig(
              NULL,
              NULL,
              $setUpOperation,
@@ -41,9 +43,8 @@ class Tests_Extensions_MultipleDatabase_DatabaseConfigTest
     }
 
     public function testGetTearDownOperation() {
-        $tearDownOperation = $this->createMock(
-            'PHPUnit_Extensions_Database_Operation_IDatabaseOperation');
-        $dbConfig = new PHPUnit_Extensions_MultipleDatabase_DatabaseConfig(
+        $tearDownOperation = $this->createMock(Operation::class);
+        $dbConfig = new DatabaseConfig(
              NULL,
              NULL,
              NULL,

@@ -1,14 +1,20 @@
 <?php
 
+namespace PHPUnit\Extensions\Assert;
+
+use PHPUnit\Extensions\Constraint\HasItems;
+use PHPUnit\Extensions\Constraint\ArrayHasKeyValuePair;
+use PHPUnit\Extensions\Constraint\ArrayEqualsNoOrder;
+use PHPUnit\Extensions\Constraint\StringMatchIgnoreWhitespace;
+use PHPUnit\Framework\Assert;
+
 /**
  * A collection of extra asserts.
  */
-class PHPUnit_Extensions_Assert_More {
-
+class More {
     private function __construct() {
        // Static library
     }
-
     /**
      * Asserts that the actual array contains at least one occurence
      * of each of the values in the expected array.
@@ -18,12 +24,11 @@ class PHPUnit_Extensions_Assert_More {
      * @param $message
      */
     public static function assertHasItems($expected, $actual, $message='') {
-        PHPUnit_Framework_Assert::assertThat(
+        Assert::assertThat(
             $actual,
-            new PHPUnit_Extensions_Constraint_HasItems($expected),
+            new HasItems($expected),
             $message);
     }
-
     /**
      * Asserts that the actual array contains a specified key/value
      * pair.
@@ -35,31 +40,28 @@ class PHPUnit_Extensions_Assert_More {
      */
     public static function assertArrayHasKeyValuePair(
         $expectedKey, $expectedValue, $actual, $message='') {
-        PHPUnit_Framework_Assert::assertThat(
+          Assert::assertThat(
             $actual,
-            new PHPUnit_Extensions_Constraint_ArrayHasKeyValuePair($expectedKey, $expectedValue),
+            new ArrayHasKeyValuePair($expectedKey, $expectedValue),
             $message);
     }
-
     /**
      * Asserts that the two arrays contain the same exact contents,
      * but are not necessarily the same order.
-     * 
+     *
      * @param array $expected
      * @param array $actual
      * @param string $message
      */
     public static function assertArrayEqualsNoOrder(
         $expected, $actual, $message='') {
-
-        PHPUnit_Framework_Assert::assertThat(
+          Assert::assertThat(
             $actual,
-            new PHPUnit_Extensions_Constraint_ArrayEqualsNoOrder($expected),
+            new ArrayEqualsNoOrder($expected),
             $message);
     }
-
     /**
-     * Asserts that the two strings match but that all whitespaces are 
+     * Asserts that the two strings match but that all whitespaces are
      * not necessarily equal.
      *
      * @param array $expected
@@ -68,10 +70,9 @@ class PHPUnit_Extensions_Assert_More {
      */
     public static function assertStringMatchIgnoreWhitespace(
         $expected, $actual, $message='') {
-        PHPUnit_Framework_Assert::assertThat(
+          Assert::assertThat(
             $actual,
-            new PHPUnit_Extensions_Constraint_StringMatchIgnoreWhitespace($expected),
+            new StringMatchIgnoreWhitespace($expected),
             $message);
     }
 }
-

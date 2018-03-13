@@ -11,8 +11,8 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": "^7.1",
-        "phpunit/phpunit": "^5.7.5",
-        "phpunit/dbunit": "^2.0.2",
+        "phpunit/phpunit": "^6.5.7",
+        "phpunit/dbunit": "^3.0.3",
         "mockery/mockery": "^1.0.0"
     },
     "autoload": {

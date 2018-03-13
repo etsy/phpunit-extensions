@@ -1,8 +1,11 @@
 <?php
+
+namespace PHPUnit\Extensions\Constraint;
+
+use PHPUnit\Framework\Constraint\Constraint;
 use SebastianBergmann\Exporter\Exporter;
 
-class PHPUnit_Extensions_Constraint_EqualsClosure
-extends PHPUnit_Framework_Constraint {
+class EqualsClosure extends Constraint {
     
     private $expected;
     private $closure;

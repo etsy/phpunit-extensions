@@ -1,6 +1,10 @@
 <?php
 
-class PHPUnit_Extensions_Helper_AccessibleObject {
+namespace PHPUnit\Extensions\Helper;
+
+use ReflectionClass;
+
+class AccessibleObject {
 
     const REGEX_ACCESSIBLE = '/@accessibleForTesting\s*$|\n/';
     

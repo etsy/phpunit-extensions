@@ -1,7 +1,15 @@
 <?php
 
-class PHPUnit_Extensions_Database_DataSet_EtsyArrayDataSet
-extends PHPUnit_Extensions_Database_DataSet_AbstractDataSet {
+namespace PHPUnit\Extensions\Database\DataSet;
+
+use PHPUnit\DbUnit\DataSet\AbstractDataSet;
+use PHPUnit\DbUnit\DataSet\DefaultTable;
+use PHPUnit\DbUnit\DataSet\DefaultTableMetadata;
+use PHPUnit\DbUnit\DataSet\DefaultTableIterator;
+
+use InvalidArgumentException;
+
+class EtsyArrayDataSet extends AbstractDataSet {
     
     private $tables;
 
@@ -11,8 +19,8 @@ extends PHPUnit_Extensions_Database_DataSet_AbstractDataSet {
     ) {
         $this->tables = $tables;
         foreach ($data as $table_name => $rows) {
-            $table = new PHPUnit_Extensions_Database_DataSet_DefaultTable(
-                new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData(
+            $table = new DefaultTable(
+                new DefaultTableMetaData(
                     $table_name,
                     $this->getColumns($rows)
                 )
@@ -33,7 +41,7 @@ extends PHPUnit_Extensions_Database_DataSet_AbstractDataSet {
     }
 
     protected function createIterator($reverse=false) {
-        return new PHPUnit_Extensions_Database_DataSet_DefaultTableIterator(
+        return new DefaultTableIterator(
             $this->tables,
             $reverse
         );

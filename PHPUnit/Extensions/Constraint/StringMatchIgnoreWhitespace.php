@@ -1,12 +1,14 @@
 <?php
 
+namespace PHPUnit\Extensions\Constraint;
+
+use PHPUnit\Framework\Constraint\Constraint;
 use SebastianBergmann\Exporter\Exporter;
 
 /**
  * Constraint for comparing strings while considering all whitespace to be equal.
  */
-class PHPUnit_Extensions_Constraint_StringMatchIgnoreWhitespace
-extends PHPUnit_Framework_Constraint {
+class StringMatchIgnoreWhitespace extends Constraint {
 
     private $expected;
     protected $exporter;

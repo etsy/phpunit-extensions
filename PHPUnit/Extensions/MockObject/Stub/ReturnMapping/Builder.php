@@ -1,6 +1,10 @@
 <?php
 
-class PHPUnit_Extensions_MockObject_Stub_ReturnMapping_Builder {
+namespace PHPUnit\Extensions\MockObject\Stub\ReturnMapping;
+
+use PHPUnit\Extensions\MockObject\Stub\ReturnMapping;
+
+class Builder {
 
     private $entry_builders;
     private $default_entry;
@@ -11,11 +15,11 @@ class PHPUnit_Extensions_MockObject_Stub_ReturnMapping_Builder {
     }
 
     /**
-     * @return PHPUnit_Extensions_MockObject_Stub_ReturnMapping_EntryBuilder
+     * @return EntryBuilder
      */
     public function addEntry() {
         $entry_builder = 
-            new PHPUnit_Extensions_MockObject_Stub_ReturnMapping_EntryBuilder();
+            new EntryBuilder();
         $this->entry_builders[] = $entry_builder;
         return $entry_builder;
     }
@@ -25,11 +29,10 @@ class PHPUnit_Extensions_MockObject_Stub_ReturnMapping_Builder {
      *
      * @param PHPUnit_Extensions_MockObject_Stub|mixed $default the default
      * return value.
-     * @return PHPUnit_Extensions_MockObject_Stub_ReturnMapping_Builder
+     * @return Builder
      */
     public function setDefault($default) {
-        $entry_builder =
-            new PHPUnit_Extensions_MockObject_Stub_ReturnMapping_EntryBuilder();
+        $entry_builder = new EntryBuilder();
         $entry_builder
             ->with($this->anything())
             ->will($default);
@@ -40,14 +43,14 @@ class PHPUnit_Extensions_MockObject_Stub_ReturnMapping_Builder {
     }
 
     /**
-     * @return PHPUnit_Extensions_MockObject_Stub_ReturnMapping
+     * @return ReturnMapping
      */
     public function build() {
         $entries = array();
         foreach ($this->entry_builders as $builder) {
             $entries[] = $builder->build();
         }
-        return new PHPUnit_Extensions_MockObject_Stub_ReturnMapping(
+        return new ReturnMapping(
             $entries,
             $this->default_entry
         );

@@ -1,11 +1,14 @@
 <?php
 
+namespace PHPUnit\Extensions\MultipleDatabase;
+
+use PHPUnit\DbUnit\DefaultTester;
+
 /**
  * Database tester that uses 
  * a PHPUnit_Extensions_MultipleDataBase_DatabaseConfig.
  */
-class PHPUnit_Extensions_MultipleDatabase_Tester 
-extends PHPUnit_Extensions_Database_DefaultTester {
+class Tester extends DefaultTester {
 
     /**
      * @param PHPUnit_Extensions_MultipleDatabase_DatabaseConfig
