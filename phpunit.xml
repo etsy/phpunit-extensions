@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.0/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         beStrictAboutCoversAnnotation="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         verbose="true">
+    <testsuite>
+        <directory suffix="Test.php">tests/Assert</directory>
+        <directory suffix="Test.php">tests/Constraint</directory>
+        <directory suffix="Test.php">tests/Database</directory>
+        <directory suffix="Test.php">tests/Helper</directory>
+        <directory suffix="Test.php">tests/MockObject</directory>
+        <directory suffix="Test.php">tests/MultipleDatabase</directory>
+    </testsuite>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+</phpunit>
