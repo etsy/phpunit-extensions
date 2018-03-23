@@ -9,7 +9,7 @@ use PHPUnit\DbUnit\DataSet\ITable;
  * populate multiple databases for tests dependent upon databases.
  */
 abstract class TestCase 
-extends \PHPUnit\Framework\TestCase {
+extends \PHPUnit\Extensions\Mockery\TestCase {
 
     private $testers;
 
@@ -42,7 +42,7 @@ extends \PHPUnit\Framework\TestCase {
         \PHPUnit\DbUnit\TestCase::assertTablesEqual($expected, $actual);
     }
 
-/**
+    /**
      * Asserts that two given datasets are equal.
      *
      * @param IDataSet $expected
