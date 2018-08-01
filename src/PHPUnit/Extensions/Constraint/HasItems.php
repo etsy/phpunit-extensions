@@ -17,7 +17,7 @@ class HasItems extends Constraint {
 	$this->exporter = new Exporter;
     }
 
-    protected function matches($other) {
+    protected function matches($other): bool {
         if (!(is_array($this->expected) && is_array($other))) {
             return false;
         }
@@ -31,7 +31,7 @@ class HasItems extends Constraint {
         return true;
     }
 
-    public function toString() {
+    public function toString(): string {
         return sprintf('has items %s', 
             $this->exporter->export($this->expected));
     }

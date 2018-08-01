@@ -51,7 +51,7 @@ implements Stub {
                 $this->exporter->export($invocation->getParameters())));
     }
 
-    public function toString() {
+    public function toString(): string {
         return 'return result determined by returning the value ' .
             'mapped by the parameters of the invocation';
     }

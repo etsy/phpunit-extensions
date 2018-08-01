@@ -7,7 +7,7 @@ use PHPUnit\Extensions\MultipleDatabase\DatabaseConfig\Builder;
 use PHPUnit\DbUnit\DataSet\IDataSet;
 use PHPUnit\DbUnit\Database\Connection;
 use PHPUnit\DbUnit\DataSet\DefaultTable;
-use PHPUnit\DbUnit\DataSet\DefaultTableMetaData;
+use PHPUnit\DbUnit\DataSet\DefaultTableMetadata;
 use PHPUnit\DbUnit\DataSet\CompositeDataSet;
 
 /**
@@ -133,7 +133,7 @@ class TestCaseTest extends \PHPUnit\Framework\TestCase {
 
     public function testAssertTablesEqual() {
         $expected = new DefaultTable(
-            new DefaultTableMetaData(
+            new DefaultTableMetadata(
                 'my_table',
                 array()
             )

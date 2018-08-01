@@ -17,7 +17,7 @@ class StringMatchIgnoreWhitespace extends Constraint {
 	$this->exporter = new Exporter;
     }
 
-    protected function matches($actual) {
+    protected function matches($actual): bool {
         return $this->normalize($this->expected) == $this->normalize($actual);
     }
 
@@ -34,7 +34,7 @@ class StringMatchIgnoreWhitespace extends Constraint {
         return preg_replace('#\&. #','', implode(' ', preg_split('/\s+/', trim($string))));
     }
 
-    public function toString() {
+    public function toString(): string {
 
        return sprintf(
            'equals ignoring whitespace %s', 

@@ -17,14 +17,14 @@ extends Constraint {
 	$this->exporter = new Exporter;
     }
 
-    protected function matches($actual) {
+    protected function matches($actual): bool {
         return call_user_func_array(
             $this->closure,
             array($this->expected, $actual)
         );
     }
 
-    public function toString() {
+    public function toString(): string {
         return sprintf('is equal to %s', 
             $this->exporter->export($this->expected)
         );
