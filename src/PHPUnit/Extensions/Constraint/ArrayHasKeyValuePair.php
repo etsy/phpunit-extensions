@@ -40,7 +40,7 @@ class ArrayHasKeyValuePair extends Constraint
      * 
      * @return bool
      */
-    protected function matches($other)
+    protected function matches($other): bool
     {
         if (!(is_array($other) || $other instanceof ArrayAccess)) {
             return false;
@@ -53,7 +53,7 @@ class ArrayHasKeyValuePair extends Constraint
      *
      * @return string
      */
-    public function toString()
+    public function toString(): string
     {
         return 'has the key ' . $this->exporter->export($this->key) .
                 ' with the value ' . $this->exporter->export($this->value);
@@ -69,7 +69,7 @@ class ArrayHasKeyValuePair extends Constraint
      * 
      * @return string
      */
-    protected function failureDescription($other)
+    protected function failureDescription($other): string
     {
         return 'an array ' . $this->toString();
     }
