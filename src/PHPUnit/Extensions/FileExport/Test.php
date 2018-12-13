@@ -2,38 +2,41 @@
 
 namespace PHPUnit\Extensions\FileExport;
 
+use PHPUnit\Framework;
+
 /**
  *   Extension of the PHPUnit Framework Test Case with export file functionality.
  *
  */
 
 /** Extension of PHPUnit class that provides export file functionality */
-abstract class TestCase extends \PHPUnit\Framework\TestCase {
+abstract class TestCase extends Framework\TestCase {
     
     /** * @const name of the primary directory for class testing exports */
     const sEXPORT_DIR = "phpunit_exports";
 
     /** @const command-line options for saving ALL exports */
-    const sSAVE_ALL_EXPORTS_OPT = "--save-all-exports";
+    const sSAVE_ALL_EXPORTS_OPT = "save-all-exports";
 
     /** @const command-line option for saving exports for a filtered test */
-    const sSAVE_EXPORTS_OPT = "--save-exports";
+    const sSAVE_EXPORTS_OPT = "save-exports";
 
     /** @const max number of differences in strings to be reported */
     const iMAX_STR_DIFFS = 10;
 
-    public static function x() {
-    }
+    /** @var string */
+    protected static $_sBackupPath = self::sEXPORT_DIR;
 
-    protected function setUp () {
-        parent::setUp();
-    }
-   
+
+    /**
+     * Clean up any unneeded backup directories
+     * @return void
+     */
     protected function tearDown () {
         $sBackupDir = self::_backupDirectory();
         $sExportDir = dirname(self::_getExportPath(true));
 
-        if (!is_dir($sBackupDir) == false) {
+        if (! is_dir($sBackupDir)) {
             return;
         }
         
@@ -58,15 +61,11 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
         parent::tearDown();
     }
 
-    protected static function _failMsg (string $sMessage) {
-        Assert::assertThat(null, false, $sMessage);
-    }
-    
     /**
      *  Compare the variable export of any variable to an existing export file
      *  If the save-export flag has been activated, the results are stored
      *
-     *  @param unknown $latest  any structure or value that can be exported
+     *  @param mixed $latest  any structure or value that can be exported
      *  @return void
      */
     public static function assertExportCompare ($latest) {
@@ -78,7 +77,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
         $sExport = var_export($latest, true);
 
         // Storage flag is set - storing the export
-        if (self::_savingExportsFlag() == true) {
+        if (self::_isSavingExport()) {
 
             self::_statusMsg("");
 
@@ -86,43 +85,46 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
             self::_backupExportDir($sPath);
             
             // Add the contents directly
-            if (file_put_contents($sPath, $sExport) === false) 
-                self::_failMsg("unable to save export: {$sPath}");
+            if (file_put_contents($sPath, $sExport) === false) {
+                self::assertFileIsWritable($sPath, "unable to save export: {$sPath}");
+            }
             self::_statusMsg("Compare exported results: {$sPath}");
         }
 
         // File should exist now
-        if (file_exists($sPath) == false)
-            self::_failMsg("export file does not exist: {$sPath}");
+        self::assertFileExists($sPath, "export file does not exist: {$sPath}");
 
         // Compare the results
         self::assertStrEqualsFile($sPath, $sExport, "Export file: {$sPath}");
     }
 
     /** Rebuilt version of the method: assertStringEqualsFile
-     *  @param $sComparePath1 path of the file
-     *  @param $sCompareStr2  string to compare
-     *  @param $sMessage
+     *  @param string $sComparePath1 path of the file
+     *  @param string $sCompareStr2  string to compare
+     *  @param string $sMessage
      *  @return void
      */
-    public static function assertStrEqualsFile ($sComparePath1, $sCompareStr2, $sMessage) {
+    public static function assertStrEqualsFile (string $sComparePath1, string $sCompareStr2, string $sMessage) {
 
         // Get the content of the file and compare against the string
-        if (($sCompareStr1 = file_get_contents($sComparePath1)) === false) 
-            self::_failMsg("unable to read exported file: {$sComparePath1}");
+        self::assertFileIsReadable($sComparePath1, "unable to read exported file: {$sComparePath1}");
+        $sCompareStr1 = file_get_contents($sComparePath1);
 
         // Binary comparison - no difference found
-        if (strcmp($sCompareStr1, $sCompareStr2) == 0)
+        if (strcmp($sCompareStr1, $sCompareStr2) == 0) {
             return;
+        }
 
         $sStatus = $sMessage . PHP_EOL;
         $sStatus .= "Differences found between exported file and variable" . PHP_EOL;
         $sStatus .= "--- Exported file" . PHP_EOL;
         $sStatus .= "+++ Actual variable" . PHP_EOL;
 
-        $sComparePath2 = "/tmp/" . basename($sComparePath1) . ".tmp";
-        if (file_put_contents($sComparePath2, $sCompareStr2) == false)
-            self::_failMsg("unable to create temporary file: {$sComparePath2}");
+        // Create the temporary file with the results
+        $sComparePath2 = sprintf("/tmp/%s.tmp", basename($sComparePath1));
+        if (file_put_contents($sComparePath2, $sCompareStr2) === false) {
+            self::assertFileIsWritable($sComparePath2, "unable to create temporary file: {$sComparePath2}");
+        }
 
         // Get the difference through the utility and throw out valid header lines
         exec("diff -u '{$sComparePath1}' '{$sComparePath2}'", $aOutput);
@@ -135,12 +137,12 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
         self::_failMsg($sStatus);
     }
 
-    /** Backup the export directory if needed
-     * 
-     *  @param string $sExportPath  export file path
-     *  @return  void
+    /**
+     * Backup the export directory if needed
+     * @param string $sExportPath  export file path
+     * @return void
      */
-    protected static function _backupExportDir ($sExportPath) {
+    protected static function _backupExportDir (string $sExportPath) {
         
         global $argv;
         static $bDirCreated = false;
@@ -175,8 +177,9 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
                     self::_backupDirectory($sBackupDir);
 
                     // Attempt to create the directory
-                    if (is_dir($sBackupDir) == false && mkdir($sBackupDir, 0777, true) == false)
-                        self::_failMsg("unable to backup export directory: $sBackupDir");
+                    if (is_dir($sBackupDir) == false && mkdir($sBackupDir, 0777, true) == false) {
+                        self::assertDirectoryExists($sBackupDir, "unable to backup export directory: {$sBackupDir}");
+                    }
 
                     // Global backup - insert all export files into the backup directory
                     if ($bGlobalBackup) {
@@ -214,31 +217,31 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
     }
    
 
-    /** Set or get the backup directory
-     *
-     *  @param string $sPath optional path name
-     *  @return  string backup directory if set, otherwise null
+    /**
+     * Set or get the backup directory
+     * @param string $sPath optional path name
+     * @return string
      */
-    static protected function _backupDirectory ($sPath = null) 
-    {
-        static $sBackupPath = null;
-        if ($sPath != null)
-            $sBackupPath = $sPath;
-        return $sBackupPath;
+    static protected function _backupDirectory (string $sPath = null) {
+        if ($sPath) {
+            self::$_sBackupPath = $sPath;
+        }
+        return self::$_sBackupPath;
     }
 
-    /** Get the export path for the class that is being tested
-     *
-     *  @param  boolean $bLastPath look for the last path
-     *  @return string export path
+    /**
+     * Get the export path for the class that is being tested
+     *  @param  bool $bLastPath look for the last path
+     *  @return string
      */
-    protected static function _getExportPath ($bLastPath = false)
-    {
-        static $aFileIndexes = array();
-        static $sLastPath = null;
+    protected static function _getExportPath (bool $bLastPath = false) {
 
-        if ($bLastPath)
+        static $aFileIndexes = [];
+        static $sLastPath    = null;
+
+        if ($bLastPath) {
             return $sLastPath;
+        }
 
         // Get the name of the originating function and class
         $aBackTrace = debug_backtrace();
@@ -251,9 +254,6 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
         // Export path combines the class and function names with an index
         $sKey = $sClass . "/" . $sFcnName;
 
-        // Set the top export path
-        self::_topExportPath(self::sEXPORT_DIR . "/" . $sClass);
-
         // First time method is called with this key
         if (array_key_exists($sKey, $aFileIndexes) == false)
             $aFileIndexes[$sKey] = 0;
@@ -264,8 +264,9 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
         // Create the directories if needed
         $sDir = dirname($sPath);
         if (file_exists($sDir) == false) {
-            if (mkdir($sDir, 0777, true) == false)
-                self::_failMsg("unable to create the export directory: $sDir");
+            if (mkdir($sDir, 0777, true) == false) {
+                self::assertDirectoryExists($sDir, "unable to create the export directory: {$sDir}");
+            }
         }
       
         // Return the path
@@ -273,60 +274,51 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
         return $sPath;
     }
 
-    /** Get or set the top export path (set only once)
-     *
-     *  @param string $sPath optional path name
-     *  @return  string export directory 
+    /**
+     * Determine if one of the command-line options have been set for saving exports
+     * @return bool
      */
-    protected static function _topExportPath ($sPath = null) 
-    {
-        static $sExportPath = null;
-        if ($sPath != null && $sExportPath == null)
-            $sExportPath = $sPath;
-        return $sExportPath;
-    }
-   
-    /** Determine if one of the command-line options have been set for saving exports.  One flag will
-     *  save exports for all method.  The other must include the method name as one of the command-line
-     *  arguments, e.g.
-     *    --save-exports test_get_patient_name
-     *    --save-exports get_patient_name
-     *  Both these examples do the same thing.  To save all the exports again:
-     *    --save-all-exports
-     *
-     *  @return boolean 
-     */
-    static protected function _savingExportsFlag () {
+    static protected function _isSavingExport () {
         
         global $argv;
-        static $aOpts = null;
 
-        // Grab the command-line args once to avoid modifications
-        if ($aOpts == null)
-            $aOpts = $argv;
-
-        // Check for the two flags
-        if (in_array(self::sSAVE_ALL_EXPORTS_OPT, $aOpts))
+        // Saving everything, so always true
+        if (in_array(self::sSAVE_ALL_EXPORTS_OPT, $argv)) {
             return true;
-        else if (! in_array(self::sSAVE_EXPORTS_OPT, $aOpts))
+        }
+
+        // No individual flag, so always false
+        if (! in_array(self::sSAVE_EXPORTS_OPT, $argv)) {
             return false;
+        }
 
         // Move back the call stack, finding the test function
         for ($n = 2, $aTrace = debug_backtrace(); $n < sizeof($aTrace); $n++) {
             $sTestFcn = $aTrace[$n]["function"];
-            if (preg_match("/^test_(.*)/", $sTestFcn, $aArgs)) 
-                return (in_array($sTestFcn, $aOpts) || in_array($aArgs[1], $aOpts));
+            if (preg_match("/^test_?(.*)/", $sTestFcn, $aArgs)) {
+                return (in_array($sTestFcn, $argv) || in_array($aArgs[1], $argv));
+            }
         }
+
         return false;
     }
 
-    /** Echo a status message
-     *  @param string $sMsg
-     *  @return void
+    /**
+     * Echo a status message
+     * @param string $sMsg
+     * @return void
      */
-    protected static function _statusMsg ($sMsg) {
+    protected static function _statusMsg (string $sMsg) {
         echo "  {$sMsg}\n";
     }
+
+    /**
+     * @param string $sMessage
+     * @return void
+     */
+    protected static function _failMsg (string $sMessage) {
+        $oConstraint = new Framework\Constraint\IsFalse;
+        self::assertThat(true, $oConstraint, $sMessage);
+    }
+
 }
-
-
