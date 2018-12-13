@@ -126,12 +126,18 @@ abstract class TestCase extends Framework\TestCase {
             self::assertFileIsWritable($sComparePath2, "unable to create temporary file: {$sComparePath2}");
         }
 
-        // Get the difference through the utility and throw out valid header lines
+        // Get the difference through the utility and throw out header lines
         exec("diff -u '{$sComparePath1}' '{$sComparePath2}'", $aOutput);
         if (preg_match('/^---/', $aOutput[0])) {
             array_shift($aOutput);
             array_shift($aOutput);
         }
+
+        // Throw out junk diff lines referring to newlines at end of file
+        $aOutput = array_filter($aOutput, function (string $sLine) {
+            return (! preg_match('/^. No newline at end of file/', $sLine));
+        });
+
         $sStatus .= implode(PHP_EOL, $aOutput);
         unlink($sComparePath2);
         self::_failMsg($sStatus);
