@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPUnit\Extensions;
+namespace PHPUnit\Extensions\FileExport;
 
 /**
  *   Extension of the PHPUnit Framework Test Case with export file functionality.
@@ -8,7 +8,7 @@ namespace PHPUnit\Extensions;
  */
 
 /** Extension of PHPUnit class that provides export file functionality */
-class FileExportCompare {
+abstract class TestCase extends \PHPUnit\Framework\TestCase {
     
     /** * @const name of the primary directory for class testing exports */
     const sEXPORT_DIR = "phpunit_exports";
