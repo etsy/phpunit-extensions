@@ -1,58 +1,41 @@
 <?php
+
+namespace PHPUnit\Extensions;
+
 /**
  *   Extension of the PHPUnit Framework Test Case with export file functionality.
  *
  */
 
 /** Extension of PHPUnit class that provides export file functionality */
-abstract class PHPUnit_FileExport_TestCase extends PHPUnit_Framework_TestCase {
+class FileExportCompare {
     
-    /**
-     * @const name of the primary directory for class testing exports
-     */
+    /** * @const name of the primary directory for class testing exports */
     const sEXPORT_DIR = "phpunit_exports";
 
-    /**
-     * @const command-line options for saving ALL exports
-     */
+    /** @const command-line options for saving ALL exports */
     const sSAVE_ALL_EXPORTS_OPT = "--save-all-exports";
 
-    /**
-     * @const command-line option for saving exports for a filtered test
-     */
+    /** @const command-line option for saving exports for a filtered test */
     const sSAVE_EXPORTS_OPT = "--save-exports";
 
-    /**
-     * @const max number of differences in strings to be reported
-     */
+    /** @const max number of differences in strings to be reported */
     const iMAX_STR_DIFFS = 10;
 
-    /** Mandatory class method to run the system
-     *
-     *  @param object  $result  see PHPUnit documentation
-     *  @return  unknown see PHPUnit documentation
-     */
-    public function run (PHPUnit_Framework_TestResult $result = NULL) {
-        return parent::run($result);
-    }
-   
-    /** Mandatory class method to get the count
-     *
-     *  @return  integer count - see PHPUnit documentation
-     */
-    public function count () {
-        return parent::count();
+    public static function x() {
     }
 
-    /** Clean up - remove any backup files if needed
-     *  @return void
-     */
-    public static function tearDownAfterClass () {
+    protected function setUp () {
+        parent::setUp();
+    }
+   
+    protected function tearDown () {
         $sBackupDir = self::_backupDirectory();
         $sExportDir = dirname(self::_getExportPath(true));
 
-        if (is_dir($sBackupDir) == false)
+        if (!is_dir($sBackupDir) == false) {
             return;
+        }
         
         if ($sBackupDir && ($dh = opendir($sBackupDir)) !== false) {
             
@@ -71,15 +54,22 @@ abstract class PHPUnit_FileExport_TestCase extends PHPUnit_Framework_TestCase {
             rmdir($sBackupDir);
             self::_statusMsg("Removing unneeded backup directory");
         }
+        
+        parent::tearDown();
     }
 
-    /** Compare the variable export of any variable to an existing export file
+    protected static function _failMsg (string $sMessage) {
+        Assert::assertThat(null, false, $sMessage);
+    }
+    
+    /**
+     *  Compare the variable export of any variable to an existing export file
      *  If the save-export flag has been activated, the results are stored
      *
      *  @param unknown $latest  any structure or value that can be exported
      *  @return void
      */
-    public function assertExportCompare ($latest) {
+    public static function assertExportCompare ($latest) {
         
         // Get the export path
         $sPath = self::_getExportPath();
@@ -93,20 +83,20 @@ abstract class PHPUnit_FileExport_TestCase extends PHPUnit_Framework_TestCase {
             self::_statusMsg("");
 
             // Back up old files if needed
-            $this->_backupExportDir($sPath);
+            self::_backupExportDir($sPath);
             
             // Add the contents directly
             if (file_put_contents($sPath, $sExport) === false) 
-                $this->fail("unable to save export: {$sPath}");
+                self::_failMsg("unable to save export: {$sPath}");
             self::_statusMsg("Compare exported results: {$sPath}");
         }
 
         // File should exist now
         if (file_exists($sPath) == false)
-            $this->fail("export file does not exist: {$sPath}");
+            self::_failMsg("export file does not exist: {$sPath}");
 
         // Compare the results
-        $this->assertStrEqualsFile($sPath, $sExport, "Export file: {$sPath}");
+        self::assertStrEqualsFile($sPath, $sExport, "Export file: {$sPath}");
     }
 
     /** Rebuilt version of the method: assertStringEqualsFile
@@ -119,7 +109,7 @@ abstract class PHPUnit_FileExport_TestCase extends PHPUnit_Framework_TestCase {
 
         // Get the content of the file and compare against the string
         if (($sCompareStr1 = file_get_contents($sComparePath1)) === false) 
-            self::fail("unable to read exported file: {$sComparePath1}");
+            self::_failMsg("unable to read exported file: {$sComparePath1}");
 
         // Binary comparison - no difference found
         if (strcmp($sCompareStr1, $sCompareStr2) == 0)
@@ -132,7 +122,7 @@ abstract class PHPUnit_FileExport_TestCase extends PHPUnit_Framework_TestCase {
 
         $sComparePath2 = "/tmp/" . basename($sComparePath1) . ".tmp";
         if (file_put_contents($sComparePath2, $sCompareStr2) == false)
-            self::fail("unable to create temporary file: {$sComparePath2}");
+            self::_failMsg("unable to create temporary file: {$sComparePath2}");
 
         // Get the difference through the utility and throw out valid header lines
         exec("diff -u '{$sComparePath1}' '{$sComparePath2}'", $aOutput);
@@ -142,7 +132,7 @@ abstract class PHPUnit_FileExport_TestCase extends PHPUnit_Framework_TestCase {
         }
         $sStatus .= implode(PHP_EOL, $aOutput);
         unlink($sComparePath2);
-        self::fail($sStatus);
+        self::_failMsg($sStatus);
     }
 
     /** Backup the export directory if needed
@@ -150,7 +140,7 @@ abstract class PHPUnit_FileExport_TestCase extends PHPUnit_Framework_TestCase {
      *  @param string $sExportPath  export file path
      *  @return  void
      */
-    protected function _backupExportDir ($sExportPath) {
+    protected static function _backupExportDir ($sExportPath) {
         
         global $argv;
         static $bDirCreated = false;
@@ -186,7 +176,7 @@ abstract class PHPUnit_FileExport_TestCase extends PHPUnit_Framework_TestCase {
 
                     // Attempt to create the directory
                     if (is_dir($sBackupDir) == false && mkdir($sBackupDir, 0777, true) == false)
-                        $this->fail("unable to backup export directory: $sBackupDir");
+                        self::_failMsg("unable to backup export directory: $sBackupDir");
 
                     // Global backup - insert all export files into the backup directory
                     if ($bGlobalBackup) {
@@ -273,10 +263,9 @@ abstract class PHPUnit_FileExport_TestCase extends PHPUnit_Framework_TestCase {
 
         // Create the directories if needed
         $sDir = dirname($sPath);
-        if (file_exists($sDir) == false)
-        {
+        if (file_exists($sDir) == false) {
             if (mkdir($sDir, 0777, true) == false)
-                $this->fail("unable to create the export directory: $sDir");
+                self::_failMsg("unable to create the export directory: $sDir");
         }
       
         // Return the path
